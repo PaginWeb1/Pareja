@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>100 razones por las que te quiero ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title {
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            padding: 40px 25px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+            transition: transform 0.3s ease;
+        }
+
+        .card.animate {
+            animation: changeReason 0.5s ease;
+        }
+
+        .number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4f70;
+            margin-bottom: 25px;
+        }
+
+        .reason {
+            font-size: 23px;
+            line-height: 1.5;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .heart {
+            font-size: 45px;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .progress-container {
+            margin-top: 20px;
+            color: white;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.35);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: white;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            color: #ff4f70;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+
+            transition: transform 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.22);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .heart-float {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            animation: floatUp linear forwards;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .final-message {
+            display: none;
+            color: #444;
+        }
+
+        .final-message h2 {
+            color: #ff4f70;
+            margin-bottom: 20px;
+        }
+
+        .final-message p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        @keyframes changeReason {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .title h1 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 35px 20px;
+                min-height: 270px;
+            }
+
+            .reason {
+                font-size: 21px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="title">
+            <h1>100 razones por las que te quiero ❤️</h1>
+            <p>Hay muchas más de 100... pero empecemos por estas.</p>
+        </div>
+
+        <div class="card" id="card">
+
+            <div id="reasonContent">
+
+                <div class="heart">❤️</div>
+
+                <div class="number" id="number">
+                    #1
+                </div>
+
+                <div class="reason" id="reason">
+                    Porque contigo incluso un día normal puede convertirse
+                    en un bonito recuerdo. ❤️
+                </div>
+
+            </div>
+
+            <div class="final-message" id="finalMessage">
+
+                <div class="heart">💖</div>
+
+                <h2>Llegaste al final ❤️</h2>
+
+                <p>
+                    Estas fueron solo 100 razones...
+                    pero podría encontrar muchas más.
+                    <br><br>
+                    Porque quererte no se puede resumir en una lista. ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="progress-container">
+
+            <div class="progress-text">
+                Razones descubiertas:
+                <span id="counter">1</span> / 100
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+
+        </div>
+
+        <button id="nextButton" onclick="nextReason()">
+            ✨ Dame otra razón
+        </button>
+
+    </div>
+
+
+    <script>
+
+        /*
+        ============================================
+        100 RAZONES
+        ============================================
+
+        Por ahora solamente tenemos 20 de prueba.
+        Después podemos poner las 100 razones reales.
+        */
+
+        const reasons = [
+
+            "Porque contigo incluso un día normal puede convertirse en un bonito recuerdo. ❤️",
+
+            "Porque tu sonrisa tiene una forma especial de alegrarme el día. 😊",
+
+            "Porque me gusta la tranquilidad que siento cuando estoy contigo.",
+
+            "Porque contigo puedo ser yo mismo sin tener que fingir nada.",
+
+            "Porque haces que los momentos pequeños se vuelvan importantes.",
+
+            "Porque siempre encuentras una forma de hacerme sonreír.",
+
+            "Porque me encanta compartir mis días contigo.",
+
+            "Porque tu forma de mirarme hace que me olvide de todo lo demás.",
+
+            "Porque contigo puedo reírme hasta de las cosas más tontas. 😂",
+
+            "Porque me haces querer ser una mejor persona.",
+
+            "Porque me encanta escuchar tus historias, incluso cuando ya me las sé.",
+
+            "Porque contigo siento que tengo a alguien a mi lado.",
+
+            "Porque haces que cualquier lugar sea especial si estás tú.",
+
+            "Porque me gusta crear recuerdos contigo.",
+
+            "Porque me encanta cuando nos reímos juntos por cualquier tontera.",
+
+            "Porque tienes una manera única de hacerme sentir querido.",
+
+            "Porque cada momento contigo termina siendo un recuerdo que quiero guardar.",
+
+            "Porque me encanta pensar en todas las cosas que todavía nos quedan por vivir.",
+
+            "Porque incluso cuando no decimos nada, disfruto estar contigo.",
+
+            "Porque simplemente eres tú... y eso ya es una razón suficiente. ❤️"
+
+        ];
+
+
+        /*
+        ============================================
+        VARIABLES
+        ============================================
+        */
+
+        let usedReasons = [0];
+
+        let currentNumber = 1;
+
+
+        /*
+        ============================================
+        MOSTRAR SIGUIENTE RAZÓN
+        ============================================
+        */
+
+        function nextReason() {
+
+            if (currentNumber >= 100) {
+
+                showFinalMessage();
+
+                return;
+            }
+
+
+            /*
+            Buscar una razón que todavía
+            no haya sido utilizada.
+            */
+
+            let randomIndex;
+
+            do {
+
+                randomIndex =
+                    Math.floor(Math.random() * reasons.length);
+
+            } while (
+                usedReasons.includes(randomIndex)
+                &&
+                usedReasons.length < reasons.length
+            );
+
+
+            /*
+            Guardamos la razón utilizada.
+            */
+
+            if (!usedReasons.includes(randomIndex)) {
+
+                usedReasons.push(randomIndex);
+
+            }
+
+
+            currentNumber++;
+
+
+            /*
+            Actualizamos pantalla.
+            */
+
+            document.getElementById("number").textContent =
+                "#" + currentNumber;
+
+            document.getElementById("reason").textContent =
+                reasons[randomIndex];
+
+
+            /*
+            Actualizar contador.
+            */
+
+            document.getElementById("counter").textContent =
+                currentNumber;
+
+
+            /*
+            Actualizar barra.
+            */
+
+            document.getElementById("progress").style.width =
+                currentNumber + "%";
+
+
+            /*
+            Animación.
+            */
+
+            const card = document.getElementById("card");
+
+            card.classList.remove("animate");
+
+            void card.offsetWidth;
+
+            card.classList.add("animate");
+
+
+            /*
+            Crear corazones.
+            */
+
+            createHearts();
+
+        }
+
+
+        /*
+        ============================================
+        MENSAJE FINAL
+        ============================================
+        */
+
+        function showFinalMessage() {
+
+            document.getElementById("reasonContent").style.display =
+                "none";
+
+            document.getElementById("finalMessage").style.display =
+                "block";
+
+            document.getElementById("nextButton").style.display =
+                "none";
+
+            document.getElementById("progress").style.width =
+                "100%";
+
+        }
+
+
+        /*
+        ============================================
+        CORAZONES FLOTANTES
+        ============================================
+        */
+
+        function createHearts() {
+
+            for (let i = 0; i < 5; i++) {
+
+                const heart =
+                    document.createElement("div");
+
+                heart.classList.add("heart-float");
+
+                heart.textContent =
+                    Math.random() > 0.5 ? "❤️" : "💕";
+
+                heart.style.left =
+                    Math.random() * 100 + "vw";
+
+                heart.style.animationDuration =
+                    (3 + Math.random() * 3) + "s";
+
+                document.body.appendChild(heart);
+
+
+                setTimeout(() => {
+
+                    heart.remove();
+
+                }, 6000);
+
+            }
+
+        }
+
+
+        /*
+        ============================================
+        INICIO
+        ============================================
+        */
+
+        document.getElementById("progress").style.width =
+            "1%";
+
+    </script>
+
+</body>
+</html>
