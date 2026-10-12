@@ -5,7 +5,10 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Para ti ❤️</title>
 
@@ -23,7 +26,10 @@
 
             min-height: 100vh;
 
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
             background:
                 linear-gradient(
@@ -50,8 +56,6 @@
 
             padding: 20px;
 
-            text-align: center;
-
             position: relative;
 
             z-index: 2;
@@ -60,28 +64,31 @@
 
         .tarjeta {
 
-            background: rgba(255,255,255,0.97);
+            background:
+                rgba(255, 255, 255, 0.97);
 
             border-radius: 28px;
 
-            padding: 40px 25px;
+            padding:
+                40px 25px;
+
+            text-align: center;
 
             box-shadow:
                 0 20px 50px
-                rgba(0,0,0,0.20);
+                rgba(0, 0, 0, 0.20);
 
             animation:
-                aparecer 0.8s ease;
+                aparecer 0.7s ease;
         }
 
 
-        /* =========================
+        /* ========================================
            PORTADA
-        ========================= */
+        ======================================== */
 
 
         #portada {
-
             display: block;
         }
 
@@ -103,8 +110,9 @@
 
             font-size: 34px;
 
-            margin:
-                10px 0 20px;
+            font-weight: bold;
+
+            margin-bottom: 20px;
         }
 
 
@@ -116,7 +124,7 @@
 
             line-height: 1.6;
 
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
 
@@ -128,10 +136,15 @@
 
             font-style: italic;
 
-            line-height: 1.5;
+            line-height: 1.6;
 
             margin-bottom: 30px;
         }
+
+
+        /* ========================================
+           BOTONES
+        ======================================== */
 
 
         .boton {
@@ -155,7 +168,7 @@
 
             box-shadow:
                 0 6px 18px
-                rgba(255,79,112,0.35);
+                rgba(255, 79, 112, 0.35);
 
             transition:
                 transform 0.2s,
@@ -165,10 +178,10 @@
 
         .boton:hover {
 
+            background: #ff365d;
+
             transform:
                 scale(1.05);
-
-            background: #ff365d;
         }
 
 
@@ -179,13 +192,12 @@
         }
 
 
-        /* =========================
-           CONTENIDO DE LAS RAZONES
-        ========================= */
+        /* ========================================
+           RAZONES
+        ======================================== */
 
 
         #razones {
-
             display: none;
         }
 
@@ -230,9 +242,9 @@
 
             display: flex;
 
-            justify-content: center;
-
             align-items: center;
+
+            justify-content: center;
 
             color: #444;
 
@@ -275,7 +287,7 @@
 
             height: 100%;
 
-            width: 1%;
+            width: 0%;
 
             background:
                 linear-gradient(
@@ -287,13 +299,45 @@
             border-radius: 20px;
 
             transition:
-                width 0.6s ease;
+                width 0.5s ease;
         }
 
 
-        /* =========================
+        /* ========================================
+           ANIMACIÓN DE RAZÓN
+        ======================================== */
+
+
+        .animar {
+
+            animation:
+                cambiarRazon 0.45s ease;
+        }
+
+
+        @keyframes cambiarRazon {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(12px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ========================================
            MENSAJE FINAL
-        ========================= */
+        ======================================== */
 
 
         #mensajeFinal {
@@ -307,6 +351,8 @@
             color: #ff4f70;
 
             font-size: 30px;
+
+            margin-bottom: 20px;
         }
 
 
@@ -324,72 +370,16 @@
 
             font-size: 45px;
 
-            margin-top: 20px;
+            margin-top: 25px;
 
             animation:
                 latido 1.4s infinite;
         }
 
 
-        /* =========================
-           ANIMACIONES
-        ========================= */
-
-
-        .aparecer {
-
-            animation:
-                aparecer 0.6s ease;
-        }
-
-
-        @keyframes aparecer {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(15px);
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        @keyframes latido {
-
-            0% {
-                transform: scale(1);
-            }
-
-            15% {
-                transform: scale(1.12);
-            }
-
-            30% {
-                transform: scale(1);
-            }
-
-            45% {
-                transform: scale(1.10);
-            }
-
-            60% {
-                transform: scale(1);
-            }
-        }
-
-
-        /* =========================
+        /* ========================================
            CORAZONES FLOTANTES
-        ========================= */
+        ======================================== */
 
 
         .corazon-flotante {
@@ -398,13 +388,11 @@
 
             bottom: -50px;
 
-            font-size: 25px;
-
-            opacity: 0.7;
-
             z-index: 1;
 
             pointer-events: none;
+
+            opacity: 0;
 
             animation:
                 subir 6s linear forwards;
@@ -438,9 +426,63 @@
         }
 
 
-        /* =========================
+        /* ========================================
+           LATIDO
+        ======================================== */
+
+
+        @keyframes latido {
+
+            0% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.12);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.10);
+            }
+
+            60% {
+                transform: scale(1);
+            }
+        }
+
+
+        /* ========================================
+           APARICIÓN
+        ======================================== */
+
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ========================================
            CELULAR
-        ========================= */
+        ======================================== */
 
 
         @media (max-width: 500px) {
@@ -476,6 +518,12 @@
             }
 
 
+            .portada-frase {
+
+                font-size: 15px;
+            }
+
+
             h1 {
 
                 font-size: 24px;
@@ -484,9 +532,9 @@
 
             .razon {
 
-                font-size: 19px;
+                min-height: 145px;
 
-                min-height: 140px;
+                font-size: 19px;
             }
 
 
@@ -513,12 +561,12 @@
     <div class="tarjeta">
 
 
-        <!-- =========================
+        <!-- =====================================
              PORTADA
-        ========================== -->
+        ====================================== -->
 
 
-        <div id="portada">
+        <section id="portada">
 
 
             <div class="corazon-portada">
@@ -554,22 +602,25 @@
 
             <button
                 class="boton"
-                onclick="abrirRegalo()">
+                id="botonAbrir"
+                onclick="abrirRegalo()"
+            >
 
                 ✨ Abrir mi regalo
 
             </button>
 
 
-        </div>
+        </section>
 
 
-        <!-- =========================
-             100 RAZONES
-        ========================== -->
+
+        <!-- =====================================
+             RAZONES
+        ====================================== -->
 
 
-        <div id="razones">
+        <section id="razones">
 
 
             <div class="corazon">
@@ -584,19 +635,24 @@
 
             <div
                 class="numero"
-                id="numero">
+                id="numero"
+            >
+                #1
             </div>
 
 
             <div
                 class="razon"
-                id="razon">
+                id="razon"
+            >
             </div>
 
 
             <div
                 class="progreso-texto"
-                id="progresoTexto">
+                id="progresoTexto"
+            >
+                1 / 100
             </div>
 
 
@@ -604,7 +660,8 @@
 
                 <div
                     class="barra-progreso"
-                    id="barraProgreso">
+                    id="barraProgreso"
+                >
                 </div>
 
             </div>
@@ -612,24 +669,28 @@
 
             <button
                 class="boton"
-                onclick="siguienteRazon()">
+                id="botonSiguiente"
+                onclick="siguienteRazon()"
+            >
 
                 ✨ Dame otra razón
 
             </button>
 
 
-        </div>
+        </section>
 
 
-        <!-- =========================
+
+        <!-- =====================================
              FINAL
-        ========================== -->
+        ====================================== -->
 
 
-        <div
+        <section
             id="mensajeFinal"
-            class="mensaje-final">
+            class="mensaje-final"
+        >
 
 
             <div class="corazon">
@@ -644,8 +705,8 @@
 
             <p>
 
-                Estas fueron 100 razones por las
-                que te quiero...
+                Estas fueron 100 razones por
+                las que te quiero...
 
             </p>
 
@@ -673,7 +734,7 @@
             </div>
 
 
-        </div>
+        </section>
 
 
     </div>
@@ -896,7 +957,7 @@ const razones = [
 
 
 /* ==================================================
-   VARIABLES
+   ESTADO
 ================================================== */
 
 
@@ -904,18 +965,93 @@ const TOTAL_RAZONES =
     razones.length;
 
 
+const CLAVE_PROGRESO =
+    "regalo_amor_razon";
+
+
+const CLAVE_MOSTRADAS =
+    "regalo_amor_mostradas";
+
+
 let razonActual =
-    parseInt(
-        localStorage.getItem("razonActual")
+    Number(
+        localStorage.getItem(
+            CLAVE_PROGRESO
+        )
     ) || 1;
 
 
 let razonesMostradas =
-    JSON.parse(
-        localStorage.getItem(
-            "razonesMostradas"
+    cargarRazonesMostradas();
+
+
+/* ==================================================
+   CARGAR RAZONES MOSTRADAS
+================================================== */
+
+
+function cargarRazonesMostradas() {
+
+    try {
+
+        const guardado =
+            localStorage.getItem(
+                CLAVE_MOSTRADAS
+            );
+
+
+        if (!guardado) {
+
+            return [];
+
+        }
+
+
+        const datos =
+            JSON.parse(guardado);
+
+
+        if (!Array.isArray(datos)) {
+
+            return [];
+
+        }
+
+
+        return datos;
+
+    }
+
+    catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+/* ==================================================
+   GUARDAR PROGRESO
+================================================== */
+
+
+function guardarProgreso() {
+
+    localStorage.setItem(
+        CLAVE_PROGRESO,
+        razonActual
+    );
+
+
+    localStorage.setItem(
+        CLAVE_MOSTRADAS,
+        JSON.stringify(
+            razonesMostradas
         )
-    ) || [];
+    );
+
+}
 
 
 /* ==================================================
@@ -926,14 +1062,25 @@ let razonesMostradas =
 function abrirRegalo() {
 
 
-    document.getElementById(
-        "portada"
-    ).style.display = "none";
+    const portada =
+        document.getElementById(
+            "portada"
+        );
+
+
+    const razonesElemento =
+        document.getElementById(
+            "razones"
+        );
+
+
+    portada.style.display =
+        "none";
 
 
     /*
-    Si ya terminó las 100,
-    mostrar directamente el final.
+    Si ya completó las 100,
+    mostrar el final.
     */
 
     if (
@@ -947,9 +1094,8 @@ function abrirRegalo() {
     }
 
 
-    document.getElementById(
-        "razones"
-    ).style.display = "block";
+    razonesElemento.style.display =
+        "block";
 
 
     mostrarRazon();
@@ -965,6 +1111,10 @@ function abrirRegalo() {
 function mostrarRazon() {
 
 
+    /*
+    Si terminó.
+    */
+
     if (
         razonActual > TOTAL_RAZONES
     ) {
@@ -976,7 +1126,11 @@ function mostrarRazon() {
     }
 
 
-    let disponibles = [];
+    /*
+    Buscar razones disponibles.
+    */
+
+    const disponibles = [];
 
 
     for (
@@ -997,53 +1151,73 @@ function mostrarRazon() {
 
 
     /*
-    Elegir una razón que
-    todavía no haya aparecido.
+    Si por alguna razón
+    no quedan razones.
     */
 
     if (
-        disponibles.length > 0
+        disponibles.length === 0
     ) {
 
+        mostrarFinal();
 
-        const posicion =
-            Math.floor(
-                Math.random()
-                *
-                disponibles.length
-            );
-
-
-        const indice =
-            disponibles[posicion];
-
-
-        razonesMostradas.push(
-            indice
-        );
-
-
-        document.getElementById(
-            "razon"
-        ).textContent =
-            razones[indice];
-
-
-        localStorage.setItem(
-            "razonesMostradas",
-            JSON.stringify(
-                razonesMostradas
-            )
-        );
+        return;
 
     }
 
+
+    /*
+    Elegir una razón aleatoria.
+    */
+
+    const posicion =
+        Math.floor(
+            Math.random()
+            *
+            disponibles.length
+        );
+
+
+    const indice =
+        disponibles[posicion];
+
+
+    /*
+    Registrar como vista.
+    */
+
+    razonesMostradas.push(
+        indice
+    );
+
+
+    /*
+    Mostrar texto.
+    */
+
+    const elementoRazon =
+        document.getElementById(
+            "razon"
+        );
+
+
+    elementoRazon.textContent =
+        razones[indice];
+
+
+    /*
+    Mostrar número.
+    */
 
     document.getElementById(
         "numero"
     ).textContent =
         "#" + razonActual;
 
+
+    /*
+    Mostrar progreso.
+    */
 
     document.getElementById(
         "progresoTexto"
@@ -1052,6 +1226,10 @@ function mostrarRazon() {
         + " / "
         + TOTAL_RAZONES;
 
+
+    /*
+    Actualizar barra.
+    */
 
     const porcentaje =
         (
@@ -1068,40 +1246,45 @@ function mostrarRazon() {
 
 
     /*
-    Guardamos la siguiente razón.
+    Guardar inmediatamente.
 
-    Ejemplo:
-
-    Está viendo #25
-
-    Se guarda #26
-
-    Si cierra la página,
-    continuará desde #26.
+    La razón actual ya fue vista,
+    por lo que la próxima vez
+    debe comenzar en la siguiente.
     */
 
+    const proximaRazon =
+        razonActual + 1;
+
+
     localStorage.setItem(
-        "razonActual",
-        razonActual + 1
+        CLAVE_PROGRESO,
+        proximaRazon
     );
 
 
-    const elemento =
-        document.getElementById(
-            "razon"
-        );
-
-
-    elemento.classList.remove(
-        "aparecer"
+    localStorage.setItem(
+        CLAVE_MOSTRADAS,
+        JSON.stringify(
+            razonesMostradas
+        )
     );
 
 
-    void elemento.offsetWidth;
+    /*
+    Animación.
+    */
+
+    elementoRazon.classList.remove(
+        "animar"
+    );
 
 
-    elemento.classList.add(
-        "aparecer"
+    void elementoRazon.offsetWidth;
+
+
+    elementoRazon.classList.add(
+        "animar"
     );
 
 }
@@ -1113,6 +1296,21 @@ function mostrarRazon() {
 
 
 function siguienteRazon() {
+
+
+    /*
+    El número aumenta AQUÍ.
+
+    Esto evita que el contador
+    se quede en #1.
+    */
+
+    razonActual++;
+
+
+    /*
+    Mostrar la siguiente.
+    */
 
     mostrarRazon();
 
@@ -1128,22 +1326,31 @@ function mostrarFinal() {
 
 
     document.getElementById(
-        "razones"
-    ).style.display = "none";
+        "portada"
+    ).style.display =
+        "none";
 
 
     document.getElementById(
-        "portada"
-    ).style.display = "none";
+        "razones"
+    ).style.display =
+        "none";
 
 
     document.getElementById(
         "mensajeFinal"
-    ).style.display = "block";
+    ).style.display =
+        "block";
 
 
     localStorage.setItem(
-        "terminado",
+        CLAVE_PROGRESO,
+        TOTAL_RAZONES + 1
+    );
+
+
+    localStorage.setItem(
+        "regalo_amor_terminado",
         "true"
     );
 
@@ -1164,12 +1371,11 @@ function crearCorazon() {
         );
 
 
-    corazon.classList.add(
-        "corazon-flotante"
-    );
+    corazon.className =
+        "corazon-flotante";
 
 
-    const corazones = [
+    const tipos = [
 
         "❤️",
         "💕",
@@ -1182,29 +1388,18 @@ function crearCorazon() {
 
 
     corazon.textContent =
-        corazones[
+        tipos[
             Math.floor(
                 Math.random()
                 *
-                corazones.length
+                tipos.length
             )
         ];
 
 
     corazon.style.left =
-        Math.random()
-        *
-        100
+        Math.random() * 100
         + "vw";
-
-
-    corazon.style.animationDuration =
-        (
-            4
-            +
-            Math.random() * 4
-        )
-        + "s";
 
 
     corazon.style.fontSize =
@@ -1214,6 +1409,15 @@ function crearCorazon() {
             Math.random() * 20
         )
         + "px";
+
+
+    corazon.style.animationDuration =
+        (
+            4
+            +
+            Math.random() * 4
+        )
+        + "s";
 
 
     document.body.appendChild(
@@ -1233,24 +1437,14 @@ function crearCorazon() {
 }
 
 
+/*
+Corazones cada 700 ms.
+*/
+
 setInterval(
     crearCorazon,
     700
 );
-
-
-/* ==================================================
-   INICIO
-==================================================
-
-   Importante:
-
-   La portada siempre aparece primero.
-
-   El progreso de las razones se mantiene
-   guardado en localStorage.
-================================================== */
-
 
 </script>
 
