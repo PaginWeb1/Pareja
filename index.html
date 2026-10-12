@@ -1,117 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>100 razones por las que te quiero ❤️</title>
 
-
-    <!-- =====================================================
-         BOOTSTRAP 5.3
-    ====================================================== -->
-
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
 
-
-    <!-- =====================================================
-         BOOTSTRAP ICONS
-    ====================================================== -->
-
+    <!-- Bootstrap Icons -->
     <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
 
-
-    <!-- =====================================================
-         GOOGLE FONTS
-    ====================================================== -->
-
+    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
-        rel="stylesheet">
-
-
-    <!-- =====================================================
-         ESTILOS PERSONALIZADOS
-    ====================================================== -->
+        rel="stylesheet"
+    >
 
     <style>
 
-        /* =================================================
-           GENERAL
-        ================================================= */
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================== */
+
+        :root {
+            --rosa: #ff4f81;
+            --rosa-claro: #ff8fab;
+            --rosa-suave: #ffe4ec;
+            --vino: #9d174d;
+            --texto: #4a2331;
+            --blanco: rgba(255,255,255,0.92);
+        }
 
         * {
             box-sizing: border-box;
         }
 
         body {
-
+            margin: 0;
             min-height: 100vh;
 
             font-family: "DM Sans", sans-serif;
 
+            color: var(--texto);
+
             background:
                 radial-gradient(
-                    circle at 15% 20%,
-                    rgba(255,255,255,.18),
-                    transparent 22%
-                ),
-
-                radial-gradient(
-                    circle at 85% 75%,
-                    rgba(255,255,255,.15),
+                    circle at 20% 20%,
+                    rgba(255,255,255,.8),
                     transparent 25%
                 ),
-
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(255,255,255,.5),
+                    transparent 25%
+                ),
                 linear-gradient(
                     135deg,
-                    #ff6f91,
-                    #ff789f,
-                    #ff6d91
+                    #ffd6e3,
+                    #ffeef4,
+                    #ffdce8
                 );
 
             overflow-x: hidden;
-
-            color: #444;
-
-            position: relative;
         }
 
 
-        /* =================================================
+        /* =========================
            FONDO ANIMADO
-        ================================================= */
+        ========================== */
 
-        .heart-bg {
-
+        .floating-heart {
             position: fixed;
 
-            bottom: -50px;
+            bottom: -40px;
 
-            color: rgba(255,255,255,.35);
+            color: rgba(255, 79, 129, .25);
 
-            font-size: 25px;
+            font-size: 20px;
 
             pointer-events: none;
 
-            animation: floatHeart 9s linear infinite;
+            animation: floatHeart linear infinite;
 
             z-index: 0;
         }
 
-
         @keyframes floatHeart {
 
             0% {
-
                 transform:
                     translateY(0)
                     rotate(0deg)
@@ -120,67 +104,33 @@
                 opacity: 0;
             }
 
-            15% {
-                opacity: .4;
+            10% {
+                opacity: 1;
             }
 
-            80% {
-                opacity: .25;
+            90% {
+                opacity: .7;
             }
 
             100% {
-
                 transform:
-                    translateY(-115vh)
+                    translateY(-110vh)
                     rotate(360deg)
-                    scale(1.2);
+                    scale(1.4);
 
                 opacity: 0;
             }
         }
 
 
-        /* =================================================
-           DESTELLOS
-        ================================================= */
+        /* =========================
+           CONTENEDOR
+        ========================== */
 
-        .sparkle {
+        .page-container {
+            position: relative;
 
-            position: fixed;
-
-            color: rgba(255,255,255,.7);
-
-            pointer-events: none;
-
-            animation: sparkle 2.5s ease-in-out infinite;
-
-            z-index: 1;
-        }
-
-
-        @keyframes sparkle {
-
-            0%,100% {
-
-                opacity: .2;
-
-                transform: scale(.7);
-            }
-
-            50% {
-
-                opacity: 1;
-
-                transform: scale(1.2);
-            }
-        }
-
-
-        /* =================================================
-           CONTENEDOR PRINCIPAL
-        ================================================= */
-
-        .main-container {
+            z-index: 2;
 
             min-height: 100vh;
 
@@ -190,68 +140,310 @@
 
             justify-content: center;
 
-            padding: 30px 15px;
-
-            position: relative;
-
-            z-index: 5;
+            padding: 25px 15px;
         }
 
 
-        /* =================================================
-           TARJETA
-        ================================================= */
+        /* =========================
+           TARJETA PRINCIPAL
+        ========================== */
+
+        .card-float {
+            width: 100%;
+            max-width: 560px;
+        }
 
         .love-card {
 
             width: 100%;
 
-            max-width: 560px;
+            background: var(--blanco);
 
-            border: 0;
+            backdrop-filter: blur(15px);
 
             border-radius: 32px;
 
-            background:
-                rgba(255,255,255,.95);
+            padding: 35px;
 
             box-shadow:
-                0 25px 70px rgba(91, 15, 38, .20);
+                0 25px 70px rgba(157, 23, 77, .18),
+                0 5px 20px rgba(255, 79, 129, .10);
 
-            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.8);
 
-            position: relative;
+            animation:
+                cardEntrance .8s ease both,
+                cardFloat 6s ease-in-out .8s infinite;
+        }
 
-            animation: cardAppear .7s ease;
+        @keyframes cardEntrance {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(35px)
+                    scale(.94);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes cardFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-7px);
+            }
+        }
+
+        .love-card:hover {
+
+            box-shadow:
+                0 30px 80px rgba(157, 23, 77, .25),
+                0 10px 30px rgba(255, 79, 129, .15);
         }
 
 
-        .love-card::before {
+        /* =========================
+           CORAZÓN PRINCIPAL
+        ========================== */
+
+        .main-heart {
+
+            width: 95px;
+            height: 95px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--rosa),
+                    var(--rosa-claro)
+                );
+
+            color: white;
+
+            font-size: 42px;
+
+            box-shadow:
+                0 15px 35px rgba(255, 79, 129, .3);
+
+            animation: heartbeat 1.8s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,100% {
+                transform: scale(1);
+            }
+
+            14% {
+                transform: scale(1.08);
+            }
+
+            28% {
+                transform: scale(1);
+            }
+
+            42% {
+                transform: scale(1.08);
+            }
+
+            56% {
+                transform: scale(1);
+            }
+        }
+
+
+        /* =========================
+           PORTADA
+        ========================== */
+
+        .cover-section {
+
+            text-align: center;
+
+            animation: fadeIn .8s ease;
+        }
+
+        .cover-label {
+
+            display: inline-block;
+
+            padding: 7px 16px;
+
+            border-radius: 50px;
+
+            background: var(--rosa-suave);
+
+            color: var(--vino);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 18px;
+
+            letter-spacing: .5px;
+        }
+
+        .cover-title {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(2rem, 6vw, 3rem);
+
+            line-height: 1.15;
+
+            margin-bottom: 18px;
+
+            color: var(--vino);
+        }
+
+        .cover-text {
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            color: #6c4653;
+
+            margin-bottom: 20px;
+        }
+
+        .cover-quote {
+
+            font-family: "Playfair Display", serif;
+
+            font-style: italic;
+
+            font-size: 18px;
+
+            color: #8b5365;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           BOTONES
+        ========================== */
+
+        .love-button {
+
+            position: relative;
+
+            overflow: hidden;
+
+            border: none;
+
+            border-radius: 50px;
+
+            padding: 14px 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--rosa),
+                    #ff759c
+                );
+
+            color: white;
+
+            font-weight: 700;
+
+            font-size: 15px;
+
+            box-shadow:
+                0 10px 25px rgba(255, 79, 129, .3);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .love-button::after {
 
             content: "";
 
             position: absolute;
 
-            width: 180px;
+            top: 0;
+            left: -100%;
 
-            height: 180px;
+            width: 60%;
+            height: 100%;
 
-            background: rgba(255,111,145,.08);
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.55),
+                    transparent
+                );
 
-            border-radius: 50%;
+            transform: skewX(-20deg);
 
-            top: -100px;
+            animation: buttonShine 3.5s infinite;
+        }
 
-            right: -70px;
+        @keyframes buttonShine {
 
-            pointer-events: none;
+            0% {
+                left: -100%;
+            }
+
+            35%,100% {
+                left: 150%;
+            }
+        }
+
+        .love-button:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 30px rgba(255, 79, 129, .4);
+        }
+
+        .love-button:active {
+
+            transform: translateY(0) scale(.97);
         }
 
 
-        @keyframes cardAppear {
+        /* =========================
+           RAZONES
+        ========================== */
+
+        #reasonsSection {
+
+            display: none;
+
+            animation: sectionEntrance .8s ease both;
+        }
+
+        @keyframes sectionEntrance {
 
             from {
-
                 opacity: 0;
 
                 transform:
@@ -260,6 +452,192 @@
             }
 
             to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        .small-heading {
+
+            text-align: center;
+
+            color: #9a6577;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+        .main-title {
+
+            text-align: center;
+
+            font-family: "Playfair Display", serif;
+
+            color: var(--vino);
+
+            font-size: clamp(2rem, 7vw, 2.8rem);
+
+            line-height: 1.15;
+
+            margin-bottom: 25px;
+        }
+
+        .main-title em {
+
+            color: var(--rosa);
+
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           NUMERO DE RAZÓN
+        ========================== */
+
+        .reason-number {
+
+            width: fit-content;
+
+            margin: 0 auto 20px;
+
+            padding: 8px 18px;
+
+            border-radius: 50px;
+
+            background: var(--rosa-suave);
+
+            color: var(--vino);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: .7px;
+
+            animation: numberPulse .6s ease;
+        }
+
+        @keyframes numberPulse {
+
+            0% {
+                transform: scale(.8);
+
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+
+                opacity: 1;
+            }
+        }
+
+
+        /* =========================
+           TARJETA DE RAZÓN
+        ========================== */
+
+        .reason-box {
+
+            position: relative;
+
+            padding: 35px 28px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fff7fa,
+                    #fff
+                );
+
+            border: 1px solid #ffe0e9;
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.8);
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .reason-box::before {
+
+            content: "“";
+
+            position: absolute;
+
+            top: -25px;
+            left: 15px;
+
+            font-family: Georgia, serif;
+
+            font-size: 120px;
+
+            color: rgba(255,79,129,.08);
+
+            pointer-events: none;
+        }
+
+        .reason-box::after {
+
+            content: "❤";
+
+            position: absolute;
+
+            right: 20px;
+            bottom: -25px;
+
+            font-size: 90px;
+
+            color: rgba(255,79,129,.06);
+
+            transform: rotate(-15deg);
+
+            pointer-events: none;
+        }
+
+        .reason-animation {
+
+            animation: reasonChange .6s ease both;
+        }
+
+        @keyframes reasonChange {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translateY(20px)
+                    scale(.96);
+            }
+
+            60% {
+
+                opacity: 1;
+
+                transform:
+                    translateY(-3px)
+                    scale(1.01);
+            }
+
+            100% {
 
                 opacity: 1;
 
@@ -269,389 +647,177 @@
             }
         }
 
+        .reason-icon {
 
-        /* =================================================
-           CONTENIDO
-        ================================================= */
+            font-size: 28px;
 
-        .card-content {
+            color: var(--rosa);
 
-            padding: 45px 42px;
-        }
-
-
-        /* =================================================
-           CORAZÓN
-        ================================================= */
-
-        .main-heart {
-
-            width: 75px;
-
-            height: 75px;
-
-            margin: 0 auto 18px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ff7ba0,
-                    #ff315f
-                );
-
-            color: white;
-
-            font-size: 34px;
-
-            box-shadow:
-                0 12px 30px rgba(255,49,95,.25);
-
-            animation: heartbeat 1.8s ease-in-out infinite;
-        }
-
-
-        @keyframes heartbeat {
-
-            0%,100% {
-                transform: scale(1);
-            }
-
-            15% {
-                transform: scale(1.1);
-            }
-
-            30% {
-                transform: scale(1);
-            }
-
-            45% {
-                transform: scale(1.06);
-            }
-
-            60% {
-                transform: scale(1);
-            }
-        }
-
-
-        /* =================================================
-           PORTADA
-        ================================================= */
-
-        .cover-label {
-
-            color: #ff416c;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            letter-spacing: 3px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 10px;
-        }
-
-
-        .cover-title {
-
-            color: #ff416c;
-
-            font-weight: 700;
-
-            font-size: clamp(28px, 5vw, 35px);
-
-            line-height: 1.2;
-
-            margin-bottom: 20px;
-        }
-
-
-        .cover-text {
-
-            color: #555;
-
-            font-size: 17px;
-
-            line-height: 1.7;
-
-            margin-bottom: 20px;
-        }
-
-
-        .cover-quote {
-
-            font-family: "Playfair Display", serif;
-
-            font-style: italic;
-
-            font-size: 16px;
-
-            line-height: 1.7;
-
-            color: #777;
-
-            padding: 18px 22px;
-
-            margin: 25px 0 30px;
-
-            border-left: 3px solid #ff6f91;
-
-            border-right: 3px solid #ff6f91;
-
-            background: rgba(255,111,145,.04);
-
-            border-radius: 12px;
-        }
-
-
-        /* =================================================
-           BOTÓN PRINCIPAL
-        ================================================= */
-
-        .love-button {
-
-            border: none;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ff416c,
-                    #ff2f5b
-                );
-
-            font-weight: 700;
-
-            padding: 15px 30px;
-
-            border-radius: 50px;
-
-            box-shadow:
-                0 12px 25px rgba(255,65,108,.25);
-
-            transition:
-                transform .2s ease,
-                box-shadow .2s ease;
-        }
-
-
-        .love-button:hover {
-
-            color: white;
-
-            transform:
-                translateY(-3px)
-                scale(1.02);
-
-            box-shadow:
-                0 16px 30px rgba(255,65,108,.32);
-        }
-
-
-        .love-button:active {
-
-            transform: scale(.96);
-        }
-
-
-        /* =================================================
-           SECCIÓN RAZONES
-        ================================================= */
-
-        #razones {
-
-            display: none;
-        }
-
-
-        .small-title {
-
-            color: #ff416c;
-
-            font-size: 12px;
-
-            letter-spacing: 3px;
-
-            text-transform: uppercase;
-
-            font-weight: 700;
-
-            margin-bottom: 6px;
-        }
-
-
-        .main-title {
-
-            color: #ff416c;
-
-            font-size: 30px;
-
-            font-weight: 700;
-
-            line-height: 1.2;
-
-            margin-bottom: 25px;
-        }
-
-
-        .main-title span {
+            margin-bottom: 12px;
 
             display: block;
 
-            font-family: "Playfair Display", serif;
-
-            font-style: italic;
-
-            font-size: 21px;
-
-            font-weight: 500;
-
-            margin-top: 5px;
-
-            color: #ff6687;
+            animation: miniHeart .8s ease;
         }
 
+        @keyframes miniHeart {
 
-        /* =================================================
-           NÚMERO
-        ================================================= */
+            0% {
+                transform: scale(.5) rotate(-15deg);
 
-        .reason-number {
+                opacity: 0;
+            }
 
-            display: inline-block;
+            70% {
+                transform: scale(1.2) rotate(5deg);
+            }
 
-            padding: 7px 16px;
+            100% {
+                transform: scale(1) rotate(0);
 
-            border-radius: 50px;
-
-            background: #ffe5ec;
-
-            color: #ff416c;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 15px;
+                opacity: 1;
+            }
         }
-
-
-        /* =================================================
-           CARTA
-        ================================================= */
-
-        .reason-box {
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #fff8fa,
-                    #fff0f4
-                );
-
-            border: 1px solid #ffd9e3;
-
-            border-radius: 24px;
-
-            padding: 34px 27px;
-
-            position: relative;
-
-            margin-bottom: 25px;
-
-            box-shadow:
-                0 8px 25px rgba(255,70,110,.06);
-        }
-
-
-        .reason-box::before {
-
-            content: "“";
-
-            position: absolute;
-
-            top: -8px;
-
-            left: 18px;
-
-            font-family: Georgia, serif;
-
-            font-size: 70px;
-
-            color: rgba(255,65,108,.13);
-        }
-
-
-        .reason-box::after {
-
-            content: "♥";
-
-            position: absolute;
-
-            right: 18px;
-
-            bottom: 10px;
-
-            color: #ff8cab;
-
-            font-size: 16px;
-
-            opacity: .65;
-        }
-
 
         .reason-text {
-
-            font-family:
-                "Playfair Display",
-                serif;
-
-            font-size: 21px;
-
-            line-height: 1.7;
-
-            color: #4d4d4d;
 
             position: relative;
 
             z-index: 2;
 
+            font-family: "Playfair Display", serif;
+
+            font-size: clamp(1.25rem, 4vw, 1.55rem);
+
+            line-height: 1.65;
+
+            color: #572c3c;
+
             margin: 0;
         }
 
 
-        /* =================================================
-           ANIMACIÓN DE RAZÓN
-        ================================================= */
+        /* =========================
+           PROGRESO
+        ========================== */
 
-        .reason-animation {
+        .progress-info {
 
-            animation: reasonChange .55s ease;
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 25px;
+
+            margin-bottom: 8px;
+
+            font-size: 13px;
+
+            color: #9a6577;
+
+            font-weight: 600;
+        }
+
+        .progress {
+
+            height: 9px;
+
+            background: #f8dce6;
+
+            border-radius: 50px;
+
+            overflow: hidden;
+        }
+
+        .progress-bar {
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--rosa),
+                    var(--rosa-claro)
+                );
+
+            border-radius: 50px;
+
+            transition: width .7s cubic-bezier(.22,1,.36,1);
+
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -80px;
+
+            width: 80px;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.5),
+                    transparent
+                );
+
+            animation: progressShine 2.5s infinite;
+        }
+
+        @keyframes progressShine {
+
+            from {
+                left: -80px;
+            }
+
+            to {
+                left: 100%;
+            }
         }
 
 
-        @keyframes reasonChange {
+        /* =========================
+           BOTON SIGUIENTE
+        ========================== */
+
+        .next-button {
+
+            width: 100%;
+
+            margin-top: 25px;
+        }
+
+
+        /* =========================
+           FINAL
+        ========================== */
+
+        #finalSection {
+
+            display: none;
+
+            text-align: center;
+
+            animation: finalEntrance 1s ease both;
+        }
+
+        @keyframes finalEntrance {
 
             from {
 
                 opacity: 0;
 
                 transform:
-                    translateY(15px)
-                    scale(.98);
+                    translateY(30px)
+                    scale(.95);
             }
 
             to {
@@ -664,296 +830,262 @@
             }
         }
 
-
-        /* =================================================
-           PROGRESO
-        ================================================= */
-
-        .progress-info {
-
-            font-size: 13px;
-
-            color: #888;
-
-            margin-bottom: 9px;
-        }
-
-
-        .custom-progress {
-
-            height: 9px;
-
-            background: #f0e9ec;
-
-            border-radius: 50px;
-
-            overflow: hidden;
-
-            box-shadow:
-                inset 0 1px 3px rgba(0,0,0,.05);
-        }
-
-
-        .custom-progress-bar {
-
-            height: 100%;
-
-            width: 0;
-
-            border-radius: 50px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ff416c,
-                    #ff7999
-                );
-
-            transition:
-                width .7s cubic-bezier(.4,0,.2,1);
-        }
-
-
-        /* =================================================
-           FINAL
-        ================================================= */
-
-        #mensajeFinal {
-
-            display: none;
-        }
-
-
         .final-heart {
 
-            font-size: 70px;
+            font-size: 65px;
 
-            color: #ff416c;
+            color: var(--rosa);
+
+            margin-bottom: 15px;
 
             animation:
-                heartbeat 1.5s infinite;
+                heartbeat 1.5s infinite,
+                finalGlow 2s ease-in-out infinite alternate;
         }
 
+        @keyframes finalGlow {
+
+            from {
+                filter:
+                    drop-shadow(
+                        0 0 3px rgba(255,79,129,.2)
+                    );
+            }
+
+            to {
+                filter:
+                    drop-shadow(
+                        0 0 15px rgba(255,79,129,.55)
+                    );
+            }
+        }
 
         .final-title {
 
-            color: #ff416c;
+            font-family: "Playfair Display", serif;
 
-            font-size: 32px;
+            font-size: clamp(2rem, 7vw, 2.8rem);
 
-            font-weight: 700;
+            color: var(--vino);
 
-            margin: 15px 0 20px;
+            margin-bottom: 20px;
         }
-
 
         .final-text {
 
-            color: #555;
-
-            font-size: 17px;
+            font-size: 16px;
 
             line-height: 1.8;
 
-            margin-bottom: 12px;
+            color: #704454;
         }
-
 
         .final-highlight {
 
-            color: #ff416c;
-
-            font-family:
-                "Playfair Display",
-                serif;
-
-            font-size: 21px;
+            font-family: "Playfair Display", serif;
 
             font-style: italic;
 
-            font-weight: 600;
+            font-size: 20px;
 
-            line-height: 1.5;
+            color: var(--rosa);
 
-            margin-top: 22px;
+            margin-top: 20px;
         }
-
 
         .final-hearts {
 
+            margin-top: 25px;
+
             font-size: 25px;
 
-            letter-spacing: 6px;
+            letter-spacing: 8px;
 
-            margin-top: 25px;
+            animation: finalHearts 1.8s ease-in-out infinite;
+        }
+
+        @keyframes finalHearts {
+
+            0%,100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
         }
 
 
-        /* =================================================
+        /* =========================
+           CORAZONES FINALES
+        ========================== */
+
+        .heart-particle {
+
+            position: fixed;
+
+            left: 50%;
+
+            bottom: 25%;
+
+            z-index: 10;
+
+            color: var(--rosa);
+
+            font-size: 24px;
+
+            pointer-events: none;
+
+            animation: finalParticle 2.5s ease-out forwards;
+        }
+
+        @keyframes finalParticle {
+
+            0% {
+
+                opacity: 1;
+
+                transform:
+                    translate(-50%, 0)
+                    scale(.5)
+                    rotate(0);
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translate(
+                        calc(-50% + var(--x)),
+                        -300px
+                    )
+                    scale(1.5)
+                    rotate(var(--rotate));
+            }
+        }
+
+
+        /* =========================
+           FADE
+        ========================== */
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /* =========================
            RESPONSIVE
-        ================================================= */
+        ========================== */
 
         @media (max-width: 576px) {
 
-            .main-container {
-
+            .page-container {
                 padding: 15px;
             }
 
-
             .love-card {
+                padding: 25px 20px;
 
-                border-radius: 27px;
+                border-radius: 26px;
             }
-
-
-            .card-content {
-
-                padding: 35px 22px;
-            }
-
 
             .main-heart {
 
-                width: 68px;
+                width: 80px;
+                height: 80px;
 
-                height: 68px;
-
-                font-size: 30px;
+                font-size: 35px;
             }
-
-
-            .main-title {
-
-                font-size: 26px;
-            }
-
-
-            .main-title span {
-
-                font-size: 19px;
-            }
-
 
             .reason-box {
-
                 padding: 30px 20px;
             }
 
-
             .reason-text {
-
-                font-size: 19px;
-
-                line-height: 1.6;
+                font-size: 1.25rem;
             }
 
+            .cover-title {
+                font-size: 2rem;
+            }
+        }
 
-            .love-button {
 
-                width: 100%;
+        /* =========================
+           REDUCIR ANIMACIONES
+        ========================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration: .01ms !important;
+
+                animation-iteration-count: 1 !important;
+
+                scroll-behavior: auto !important;
             }
         }
 
     </style>
-
 </head>
-
 
 <body>
 
 
-    <!-- =====================================================
+    <!-- =====================================
          CORAZONES DEL FONDO
-    ====================================================== -->
+    ====================================== -->
 
-    <div class="heart-bg" style="left:5%; animation-delay:0s;">
-        <i class="bi bi-heart-fill"></i>
-    </div>
-
-    <div class="heart-bg" style="left:18%; animation-delay:3s;">
-        <i class="bi bi-heart"></i>
-    </div>
-
-    <div class="heart-bg" style="left:35%; animation-delay:1s;">
-        <i class="bi bi-heart-fill"></i>
-    </div>
-
-    <div class="heart-bg" style="left:55%; animation-delay:4s;">
-        <i class="bi bi-heart"></i>
-    </div>
-
-    <div class="heart-bg" style="left:75%; animation-delay:2s;">
-        <i class="bi bi-heart-fill"></i>
-    </div>
-
-    <div class="heart-bg" style="left:90%; animation-delay:5s;">
-        <i class="bi bi-heart"></i>
-    </div>
+    <div class="floating-heart" style="left:5%; animation-duration:12s; animation-delay:0s;">❤</div>
+    <div class="floating-heart" style="left:15%; animation-duration:16s; animation-delay:3s;">♥</div>
+    <div class="floating-heart" style="left:28%; animation-duration:13s; animation-delay:5s;">❤</div>
+    <div class="floating-heart" style="left:42%; animation-duration:17s; animation-delay:2s;">♥</div>
+    <div class="floating-heart" style="left:55%; animation-duration:14s; animation-delay:7s;">❤</div>
+    <div class="floating-heart" style="left:70%; animation-duration:18s; animation-delay:4s;">♥</div>
+    <div class="floating-heart" style="left:82%; animation-duration:13s; animation-delay:1s;">❤</div>
+    <div class="floating-heart" style="left:94%; animation-duration:16s; animation-delay:6s;">♥</div>
 
 
-    <!-- =====================================================
-         DESTELLOS
-    ====================================================== -->
-
-    <div class="sparkle"
-         style="left:10%; top:20%;">
-        ✦
-    </div>
-
-    <div class="sparkle"
-         style="left:85%; top:17%; animation-delay:1s;">
-        ✧
-    </div>
-
-    <div class="sparkle"
-         style="left:92%; top:75%; animation-delay:.5s;">
-        ✦
-    </div>
-
-    <div class="sparkle"
-         style="left:15%; top:78%; animation-delay:1.5s;">
-        ✧
-    </div>
-
-
-    <!-- =====================================================
+    <!-- =====================================
          CONTENEDOR
-    ====================================================== -->
+    ====================================== -->
 
-    <main class="main-container">
+    <main class="page-container">
 
-        <div class="love-card">
+        <div class="card-float">
 
-            <!-- =================================================
-                 PORTADA
-            ================================================== -->
+            <div class="love-card">
 
-            <section id="portada">
 
-                <div class="card-content text-center">
+                <!-- =====================================
+                     PORTADA
+                ====================================== -->
 
+                <section id="coverSection" class="cover-section">
 
                     <div class="main-heart">
-
                         <i class="bi bi-heart-fill"></i>
-
                     </div>
-
 
                     <div class="cover-label">
-
-                        Para ti
-
+                        ❤️ PARA TI
                     </div>
 
-
                     <h1 class="cover-title">
-
                         Hay algo que quiero decirte...
-
                     </h1>
-
 
                     <p class="cover-text">
 
@@ -962,19 +1094,18 @@
 
                     </p>
 
+                    <p class="cover-quote">
 
-                    <div class="cover-quote">
+                        “Porque hay cosas que no siempre
+                        sé cómo decirte, así que decidí escribirlas.”
 
-                        Porque hay cosas que no siempre
-                        sé cómo decirte, así que decidí
-                        escribirlas.
-
-                    </div>
-
+                    </p>
 
                     <button
-                        class="btn love-button"
-                        onclick="abrirRegalo()">
+                        id="openButton"
+                        class="love-button"
+                        onclick="abrirRegalo()"
+                    >
 
                         <i class="bi bi-stars me-2"></i>
 
@@ -982,97 +1113,81 @@
 
                     </button>
 
-                </div>
-
-            </section>
+                </section>
 
 
-            <!-- =================================================
-                 RAZONES
-            ================================================== -->
 
-            <section id="razones">
+                <!-- =====================================
+                     RAZONES
+                ====================================== -->
 
-                <div class="card-content text-center">
+                <section id="reasonsSection">
 
-
-                    <div class="main-heart">
-
-                        <i class="bi bi-heart-fill"></i>
-
+                    <div class="small-heading">
+                        Una pequeña colección de sentimientos
                     </div>
 
-
-                    <div class="small-title">
-
-                        Una pequeña colección...
-
-                    </div>
-
-
-                    <h1 class="main-title">
+                    <h2 class="main-title">
 
                         100 razones
+                        <br>
 
-                        <span>
-                            por las que te quiero
-                            <i class="bi bi-heart-fill"></i>
-                        </span>
+                        <em>por las que te quiero ❤️</em>
 
-                    </h1>
+                    </h2>
 
-
-                    <!-- NÚMERO -->
 
                     <div
-                        id="numero"
-                        class="reason-number">
-
+                        id="reasonNumber"
+                        class="reason-number"
+                    >
                         RAZÓN #1
-
                     </div>
 
-
-                    <!-- CARTA -->
 
                     <div
                         id="reasonBox"
-                        class="reason-box">
+                        class="reason-box"
+                    >
+
+                        <i
+                            id="reasonIcon"
+                            class="bi bi-heart-fill reason-icon"
+                        ></i>
 
                         <p
-                            id="razon"
-                            class="reason-text">
-
-                            Porque haces mis días
-                            más bonitos.
-
-                        </p>
+                            id="reasonText"
+                            class="reason-text"
+                        ></p>
 
                     </div>
 
 
                     <!-- PROGRESO -->
 
-                    <div class="mb-4">
+                    <div class="progress-info">
+
+                        <span>
+                            Progreso
+                        </span>
+
+                        <span id="progressText">
+                            1 / 100
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="progress"
+                        role="progressbar"
+                        aria-label="Progreso de razones"
+                    >
 
                         <div
-                            id="progresoTexto"
-                            class="progress-info">
-
-                            1 de 100 razones descubiertas ❤️
-
-                        </div>
-
-
-                        <div class="custom-progress">
-
-                            <div
-                                id="barraProgreso"
-                                class="custom-progress-bar">
-
-                            </div>
-
-                        </div>
+                            id="progressBar"
+                            class="progress-bar"
+                            style="width: 1%"
+                        ></div>
 
                     </div>
 
@@ -1080,9 +1195,10 @@
                     <!-- BOTÓN -->
 
                     <button
-                        id="botonSiguiente"
-                        class="btn love-button"
-                        onclick="siguienteRazon()">
+                        id="nextButton"
+                        class="love-button next-button"
+                        onclick="siguienteRazon()"
+                    >
 
                         <i class="bi bi-stars me-2"></i>
 
@@ -1090,19 +1206,15 @@
 
                     </button>
 
-                </div>
-
-            </section>
+                </section>
 
 
-            <!-- =================================================
-                 FINAL
-            ================================================== -->
 
-            <section id="mensajeFinal">
+                <!-- =====================================
+                     FINAL
+                ====================================== -->
 
-                <div class="card-content text-center">
-
+                <section id="finalSection">
 
                     <div class="final-heart">
 
@@ -1110,13 +1222,11 @@
 
                     </div>
 
+                    <h2 class="final-title">
 
-                    <h1 class="final-title">
+                        Llegaste al final ❤️
 
-                        Llegaste al final
-
-                    </h1>
-
+                    </h2>
 
                     <p class="final-text">
 
@@ -1125,289 +1235,169 @@
 
                     </p>
 
-
                     <p class="final-text">
 
-                        Pero la verdad es que podría
-                        escribir muchas más.
+                        Pero la verdad es que
+                        podría escribir muchas más.
 
                     </p>
-
 
                     <p class="final-highlight">
 
                         Porque quererte no cabe
-                        en una lista de 100 razones. ❤️
+                        en una lista de 100 razones.
 
                     </p>
 
-
                     <div class="final-hearts">
 
-                        💕 ❤️ 💕 ❤️ 💕
+                        ❤️ 💕 ❤️
 
                     </div>
 
-                </div>
+                </section>
 
-            </section>
+
+            </div>
 
         </div>
 
     </main>
 
 
-    <!-- =====================================================
+
+    <!-- =====================================
          JAVASCRIPT
-    ====================================================== -->
+    ====================================== -->
 
     <script>
 
-
-        /* =================================================
+        /* =====================================
            100 RAZONES
-        ================================================= */
+        ====================================== */
 
         const razones = [
 
             "Porque haces mis días más bonitos.",
-
             "Porque contigo puedo ser completamente yo.",
-
             "Porque tu sonrisa tiene algo que me encanta.",
-
             "Porque siempre encuentras una forma de hacerme sonreír.",
-
             "Porque me encanta compartir momentos contigo.",
-
             "Porque contigo hasta los momentos simples se sienten especiales.",
-
             "Porque tu forma de ser me encanta.",
-
             "Porque me haces sentir acompañado.",
-
             "Porque me gusta escucharte hablar.",
-
             "Porque cada recuerdo contigo tiene un lugar especial en mi corazón.",
-
             "Porque me encanta cuando sonríes por algo que te hace feliz.",
-
             "Porque haces que quiera ser una mejor persona.",
-
             "Porque contigo puedo hablar de cualquier cosa.",
-
             "Porque me gusta cómo ves las cosas.",
-
             "Porque tus abrazos hacen que todo parezca estar bien.",
-
             "Porque me encanta pasar tiempo contigo.",
-
             "Porque tienes una forma única de hacerme sentir especial.",
-
             "Porque me encanta tu manera de querer.",
-
             "Porque contigo puedo disfrutar hasta los días más normales.",
-
             "Porque siempre hay algo nuevo que descubrir de ti.",
-
             "Porque me encanta cuando nos reímos juntos.",
-
             "Porque tus pequeños detalles significan mucho para mí.",
-
             "Porque haces que mis preocupaciones parezcan más pequeñas.",
-
             "Porque me encanta tenerte en mi vida.",
-
             "Porque contigo he creado recuerdos que quiero guardar para siempre.",
-
             "Porque tu compañía siempre se siente especial.",
-
             "Porque me gusta cómo me haces sentir cuando estamos juntos.",
-
             "Porque contigo puedo compartir mis sueños.",
-
             "Porque me encanta saber que puedo contar contigo.",
-
             "Porque tienes una personalidad que me enamora.",
-
             "Porque tu forma de mirar me encanta.",
-
             "Porque haces que cualquier lugar sea mejor si estás tú.",
-
             "Porque me encanta cuando hacemos cosas juntos.",
-
             "Porque contigo aprendí que los pequeños momentos pueden significar muchísimo.",
-
             "Porque me gusta escucharte contar tus historias.",
-
             "Porque tienes una manera especial de alegrarme.",
-
             "Porque me encanta verte feliz.",
-
             "Porque tu felicidad también se vuelve importante para mí.",
-
             "Porque me gusta cuando podemos olvidarnos del mundo y simplemente disfrutar.",
-
             "Porque contigo puedo crear recuerdos inolvidables.",
-
             "Porque me encanta tu sentido del humor.",
-
             "Porque haces que incluso una conversación sencilla sea interesante.",
-
             "Porque me gusta cómo eres cuando estás feliz.",
-
             "Porque tienes detalles que quizás no notas, pero yo sí.",
-
             "Porque me encanta cuando me haces reír sin intentarlo.",
-
             "Porque contigo siento que el tiempo pasa demasiado rápido.",
-
             "Porque me gusta estar cerca de ti.",
-
             "Porque haces que mi corazón se sienta tranquilo.",
-
             "Porque me encanta compartir mis alegrías contigo.",
-
             "Porque también quiero estar contigo en los días difíciles.",
-
             "Porque me gusta cómo podemos apoyarnos.",
-
             "Porque tu presencia significa mucho para mí.",
-
             "Porque me encanta la confianza que tenemos.",
-
             "Porque contigo puedo hablar desde el corazón.",
-
             "Porque me haces sentir querido.",
-
             "Porque me encanta cuando hacemos recuerdos sin planearlos.",
-
             "Porque cada momento contigo puede convertirse en una historia.",
-
             "Porque me encanta tu forma de expresarte.",
-
             "Porque contigo puedo disfrutar de las cosas pequeñas.",
-
             "Porque me gusta imaginar nuevos recuerdos contigo.",
-
             "Porque haces que mi vida tenga momentos más felices.",
-
             "Porque me encanta compartir mis planes contigo.",
-
             "Porque me gusta saber qué cosas te hacen feliz.",
-
             "Porque quiero conocer cada vez más de ti.",
-
             "Porque tu forma de pensar me parece especial.",
-
             "Porque me encanta cuando tenemos nuestras propias bromas.",
-
             "Porque contigo puedo reírme hasta de las cosas más tontas.",
-
             "Porque me gusta sentir que somos un equipo.",
-
             "Porque me encanta cuando logramos algo juntos.",
-
             "Porque haces que quiera disfrutar más el presente.",
-
             "Porque me encanta recordar nuestros momentos juntos.",
-
             "Porque siempre hay una razón para sonreír cuando pienso en ti.",
-
             "Porque me gusta cómo cambia mi día cuando apareces.",
-
             "Porque tienes un lugar muy especial en mi corazón.",
-
             "Porque me encanta tu manera de demostrar cariño.",
-
             "Porque contigo puedo sentirme en paz.",
-
             "Porque me haces valorar mucho más los momentos compartidos.",
-
             "Porque me encanta cuando me cuentas lo que estás pensando.",
-
             "Porque quiero seguir creando recuerdos contigo.",
-
             "Porque me gusta la persona que soy cuando estoy contigo.",
-
             "Porque tu forma de ser deja una huella bonita en mi vida.",
-
             "Porque me encanta compartir nuestras pequeñas aventuras.",
-
             "Porque haces que cualquier día pueda convertirse en un buen día.",
-
             "Porque contigo puedo disfrutar simplemente de estar juntos.",
-
             "Porque me encanta cuando conseguimos hacernos reír mutuamente.",
-
             "Porque tus palabras pueden cambiar mi ánimo.",
-
             "Porque me gusta la complicidad que tenemos.",
-
             "Porque cada momento contigo tiene algo especial.",
-
             "Porque me encanta saber que estás en mi vida.",
-
             "Porque contigo los recuerdos se vuelven más bonitos.",
-
             "Porque me haces sentir afortunado.",
-
             "Porque me encanta tu manera de demostrar quién eres.",
-
             "Porque disfruto cada oportunidad de compartir contigo.",
-
             "Porque quiero estar presente en muchos de tus momentos importantes.",
-
             "Porque me encanta descubrir nuevas cosas de ti.",
-
             "Porque haces que quiera cuidar lo que tenemos.",
-
             "Porque me gusta cuando simplemente estamos juntos sin necesidad de hacer nada.",
-
             "Porque contigo aprendí a valorar mucho más los pequeños detalles.",
-
             "Porque me encanta todo lo que hemos vivido juntos.",
-
             "Porque, entre tantas personas en el mundo, me alegra haberte encontrado."
 
         ];
 
 
-        /* =================================================
-           COMPROBACIÓN
-        ================================================= */
-
-        console.log(
-            "Total de razones:",
-            razones.length
-        );
-
-
-        /* =================================================
+        /* =====================================
            CONFIGURACIÓN
-        ================================================= */
+        ====================================== */
 
         const TOTAL = razones.length;
 
-
-        /*
-         * Usamos una nueva clave V6 para no mezclar
-         * el progreso de las versiones anteriores.
-         */
-
         const STORAGE_PROGRESO =
-            "regalo_amor_v6_progreso";
-
+            "regalo_amor_v7_progreso";
 
         const STORAGE_MOSTRADAS =
-            "regalo_amor_v6_mostradas";
+            "regalo_amor_v7_mostradas";
 
 
         let razonActual =
             Number(
-                localStorage.getItem(
-                    STORAGE_PROGRESO
-                )
+                localStorage.getItem(STORAGE_PROGRESO)
             ) || 1;
 
 
@@ -1415,56 +1405,99 @@
             cargarRazones();
 
 
-        /* =================================================
+        /* =====================================
+           ELEMENTOS
+        ====================================== */
+
+        const coverSection =
+            document.getElementById("coverSection");
+
+        const reasonsSection =
+            document.getElementById("reasonsSection");
+
+        const finalSection =
+            document.getElementById("finalSection");
+
+        const reasonNumber =
+            document.getElementById("reasonNumber");
+
+        const reasonBox =
+            document.getElementById("reasonBox");
+
+        const reasonIcon =
+            document.getElementById("reasonIcon");
+
+        const reasonText =
+            document.getElementById("reasonText");
+
+        const progressText =
+            document.getElementById("progressText");
+
+        const progressBar =
+            document.getElementById("progressBar");
+
+        const nextButton =
+            document.getElementById("nextButton");
+
+
+        /* =====================================
            CARGAR RAZONES MOSTRADAS
-        ================================================= */
+        ====================================== */
 
         function cargarRazones() {
 
             try {
 
-                const datos =
+                const guardadas =
                     JSON.parse(
                         localStorage.getItem(
                             STORAGE_MOSTRADAS
                         )
                     );
 
+                return Array.isArray(guardadas)
+                    ? guardadas
+                    : [];
 
-                if (Array.isArray(datos)) {
+            } catch {
 
-                    return datos.filter(
-                        numero =>
-                            Number.isInteger(numero) &&
-                            numero >= 0 &&
-                            numero < TOTAL
-                    );
-
-                }
-
-            } catch (error) {
-
-                console.log(
-                    "No se pudo recuperar el progreso."
-                );
-
+                return [];
             }
-
-            return [];
-
         }
 
 
-        /* =================================================
+        /* =====================================
+           GUARDAR PROGRESO
+        ====================================== */
+
+        function guardarDatos() {
+
+            localStorage.setItem(
+                STORAGE_PROGRESO,
+                razonActual
+            );
+
+            localStorage.setItem(
+                STORAGE_MOSTRADAS,
+                JSON.stringify(
+                    razonesMostradas
+                )
+            );
+        }
+
+
+        /* =====================================
            ABRIR REGALO
-        ================================================= */
+        ====================================== */
 
         function abrirRegalo() {
 
-            document
-                .getElementById("portada")
-                .style.display = "none";
+            coverSection.style.display = "none";
 
+            reasonsSection.style.display = "block";
+
+            reasonsSection.style.animation =
+                "sectionEntrance .8s ease both";
 
             if (razonActual > TOTAL) {
 
@@ -1473,132 +1506,102 @@
                 return;
             }
 
-
-            document
-                .getElementById("razones")
-                .style.display = "block";
-
-
             mostrarRazon();
-
         }
 
 
-        /* =================================================
-           MOSTRAR RAZÓN
-        ================================================= */
+        /* =====================================
+           OBTENER RAZÓN ALEATORIA
+        ====================================== */
 
-        function mostrarRazon() {
+        function obtenerRazonAleatoria() {
+
+            const disponibles =
+                razones
+                    .map((_, index) => index)
+                    .filter(
+                        index =>
+                            !razonesMostradas.includes(index)
+                    );
 
 
-            if (razonActual > TOTAL) {
+            if (disponibles.length === 0) {
 
-                mostrarFinal();
-
-                return;
+                return null;
             }
 
 
-            /*
-             * Encontrar razones todavía
-             * no utilizadas.
-             */
-
-            const disponibles = [];
-
-
-            for (
-                let i = 0;
-                i < TOTAL;
-                i++
-            ) {
-
-                if (
-                    !razonesMostradas.includes(i)
-                ) {
-
-                    disponibles.push(i);
-
-                }
-
-            }
-
-
-            /*
-             * Si ya no quedan razones.
-             */
-
-            if (
-                disponibles.length === 0
-            ) {
-
-                mostrarFinal();
-
-                return;
-            }
-
-
-            /*
-             * Elegir una al azar.
-             */
-
-            const posicion =
+            const indiceAleatorio =
                 Math.floor(
                     Math.random() *
                     disponibles.length
                 );
 
 
+            return disponibles[indiceAleatorio];
+        }
+
+
+        /* =====================================
+           MOSTRAR RAZÓN
+        ====================================== */
+
+        function mostrarRazon() {
+
+            if (razonActual > TOTAL) {
+
+                mostrarFinal();
+
+                return;
+            }
+
+
             const indice =
-                disponibles[posicion];
+                obtenerRazonAleatoria();
 
 
-            /*
-             * Guardar como mostrada.
-             */
+            if (indice === null) {
+
+                mostrarFinal();
+
+                return;
+            }
+
 
             razonesMostradas.push(indice);
 
 
-            /*
-             * Elementos.
-             */
-
-            const numero =
-                document.getElementById(
-                    "numero"
-                );
+            reasonNumber.textContent =
+                `RAZÓN #${razonActual}`;
 
 
-            const razon =
-                document.getElementById(
-                    "razon"
-                );
+            reasonText.textContent =
+                razones[indice];
 
 
-            const reasonBox =
-                document.getElementById(
-                    "reasonBox"
-                );
+            progressText.textContent =
+                `${razonActual} / ${TOTAL}`;
 
 
-            const progreso =
-                document.getElementById(
-                    "progresoTexto"
-                );
+            const porcentaje =
+                (razonActual / TOTAL) * 100;
 
 
-            const barra =
-                document.getElementById(
-                    "barraProgreso"
-                );
+            progressBar.style.width =
+                `${porcentaje}%`;
 
 
-            /*
-             * Reiniciar animación.
-             */
+            /* Reiniciar animación */
 
             reasonBox.classList.remove(
+                "reason-animation"
+            );
+
+            reasonIcon.classList.remove(
+                "reason-animation"
+            );
+
+            reasonNumber.classList.remove(
                 "reason-animation"
             );
 
@@ -1610,241 +1613,167 @@
                 "reason-animation"
             );
 
+            reasonIcon.classList.add(
+                "reason-animation"
+            );
 
-            /*
-             * Mostrar número.
-             */
-
-            numero.textContent =
-                "RAZÓN #" +
-                razonActual;
-
-
-            /*
-             * Mostrar razón.
-             */
-
-            razon.textContent =
-                razones[indice];
-
-
-            /*
-             * Texto progreso.
-             */
-
-            progreso.textContent =
-                razonActual +
-                " de " +
-                TOTAL +
-                " razones descubiertas ❤️";
-
-
-            /*
-             * Barra.
-             */
-
-            const porcentaje =
-                (
-                    razonActual /
-                    TOTAL
-                ) * 100;
-
-
-            barra.style.width =
-                porcentaje + "%";
-
-
-            /*
-             * Guardar siguiente posición.
-             */
-
-            localStorage.setItem(
-                STORAGE_PROGRESO,
-                razonActual + 1
+            reasonNumber.classList.add(
+                "reason-animation"
             );
 
 
-            localStorage.setItem(
-                STORAGE_MOSTRADAS,
-                JSON.stringify(
-                    razonesMostradas
-                )
+            /* Guardamos inmediatamente */
+
+            guardarDatos();
+
+
+            console.log(
+                `Razón #${razonActual}:`,
+                razones[indice]
             );
 
+            console.log(
+                "Razones utilizadas:",
+                razonesMostradas.length
+            );
         }
 
 
-        /* =================================================
+        /* =====================================
            SIGUIENTE RAZÓN
-        ================================================= */
+        ====================================== */
 
         function siguienteRazon() {
 
             razonActual++;
 
 
-            if (
-                razonActual > TOTAL
-            ) {
+            if (razonActual > TOTAL) {
 
                 mostrarFinal();
+
+                guardarDatos();
 
                 return;
             }
 
 
             mostrarRazon();
-
         }
 
 
-        /* =================================================
-           FINAL
-        ================================================= */
+        /* =====================================
+           MOSTRAR FINAL
+        ====================================== */
 
         function mostrarFinal() {
 
-            document
-                .getElementById("portada")
-                .style.display = "none";
+            reasonsSection.style.display =
+                "none";
 
-
-            document
-                .getElementById("razones")
-                .style.display = "none";
-
-
-            document
-                .getElementById("mensajeFinal")
-                .style.display = "block";
-
-
-            localStorage.setItem(
-                STORAGE_PROGRESO,
-                TOTAL + 1
-            );
+            finalSection.style.display =
+                "block";
 
 
             lanzarCorazones();
 
+
+            setTimeout(() => {
+
+                lanzarCorazones();
+
+            }, 700);
+
+
+            setTimeout(() => {
+
+                lanzarCorazones();
+
+            }, 1400);
         }
 
 
-        /* =================================================
+        /* =====================================
            CORAZONES FINALES
-        ================================================= */
+        ====================================== */
 
         function lanzarCorazones() {
 
-            const corazones = [
-
-                "❤️",
-                "💕",
-                "💗",
-                "💖",
-                "💘"
-
-            ];
+            const cantidad = 18;
 
 
             for (
                 let i = 0;
-                i < 20;
+                i < cantidad;
                 i++
             ) {
 
-                setTimeout(
-                    () => {
-
-                        const heart =
-                            document.createElement(
-                                "div"
-                            );
+                const heart =
+                    document.createElement("div");
 
 
-                        heart.textContent =
-                            corazones[
-                                Math.floor(
-                                    Math.random() *
-                                    corazones.length
-                                )
-                            ];
+                heart.className =
+                    "heart-particle";
 
 
-                        heart.style.position =
-                            "fixed";
+                heart.innerHTML =
+                    Math.random() > .5
+                        ? "❤️"
+                        : "💕";
 
 
-                        heart.style.left =
-                            Math.random() *
-                            100 +
-                            "vw";
-
-
-                        heart.style.bottom =
-                            "-30px";
-
-
-                        heart.style.fontSize =
-                            18 +
-                            Math.random() *
-                            25 +
-                            "px";
-
-
-                        heart.style.zIndex =
-                            "100";
-
-
-                        heart.style.pointerEvents =
-                            "none";
-
-
-                        heart.style.transition =
-                            "transform 4s ease, opacity 4s ease";
-
-
-                        document.body.appendChild(
-                            heart
-                        );
-
-
-                        setTimeout(
-                            () => {
-
-                                heart.style.transform =
-                                    "translateY(-110vh) rotate(360deg)";
-
-
-                                heart.style.opacity =
-                                    "0";
-
-                            },
-                            50
-                        );
-
-
-                        setTimeout(
-                            () => {
-
-                                heart.remove();
-
-                            },
-                            4200
-                        );
-
-
-                    },
-                    i * 160
+                heart.style.setProperty(
+                    "--x",
+                    `${(Math.random() - .5) * 500}px`
                 );
 
-            }
 
+                heart.style.setProperty(
+                    "--rotate",
+                    `${(Math.random() - .5) * 80}deg`
+                );
+
+
+                heart.style.left =
+                    `${50 + (Math.random() - .5) * 20}%`;
+
+
+                heart.style.animationDelay =
+                    `${Math.random() * .5}s`;
+
+
+                document.body.appendChild(
+                    heart
+                );
+
+
+                setTimeout(() => {
+
+                    heart.remove();
+
+                }, 3000);
+            }
+        }
+
+
+        /* =====================================
+           COMPROBACIÓN
+        ====================================== */
+
+        console.log(
+            "Total de razones:",
+            TOTAL
+        );
+
+
+        if (TOTAL !== 100) {
+
+            console.error(
+                "ERROR: deben existir exactamente 100 razones."
+            );
         }
 
     </script>
 
-
 </body>
-
 </html>
