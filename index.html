@@ -9,188 +9,162 @@
     <style>
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         body {
+            margin: 0;
             min-height: 100vh;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+
+            background: linear-gradient(
+                135deg,
+                #ff758c,
+                #ff7eb3
+            );
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             overflow: hidden;
-            color: #333;
         }
 
-        .container {
-            width: 90%;
+        .contenedor {
+            width: 100%;
             max-width: 500px;
+            padding: 20px;
             text-align: center;
             position: relative;
             z-index: 2;
         }
 
-        .title {
-            color: white;
-            margin-bottom: 25px;
+        .tarjeta {
+            background: white;
+            border-radius: 25px;
+            padding: 35px 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
-        .title h1 {
-            font-size: 32px;
+        .corazon {
+            font-size: 65px;
+            animation: latido 1.3s infinite;
             margin-bottom: 10px;
         }
 
-        .title p {
-            font-size: 16px;
-            opacity: 0.95;
+        h1 {
+            color: #ff4f70;
+            font-size: 27px;
+            margin: 5px 0 25px;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 25px;
-            padding: 40px 25px;
-            min-height: 280px;
+        .numero {
+            color: #ff4f70;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .razon {
+            min-height: 120px;
+
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
 
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-
-            transition: transform 0.3s ease;
-        }
-
-        .card.animate {
-            animation: changeReason 0.5s ease;
-        }
-
-        .number {
-            font-size: 20px;
-            font-weight: bold;
-            color: #ff4f70;
-            margin-bottom: 25px;
-        }
-
-        .reason {
-            font-size: 23px;
-            line-height: 1.5;
-            font-weight: 500;
             color: #444;
+            font-size: 21px;
+            line-height: 1.5;
+            padding: 10px;
         }
 
-        .heart {
-            font-size: 45px;
-            margin-bottom: 20px;
-            animation: heartbeat 1.5s infinite;
-        }
-
-        .progress-container {
-            margin-top: 20px;
-            color: white;
-        }
-
-        .progress-text {
+        .progreso-texto {
+            color: #777;
             font-size: 14px;
-            margin-bottom: 8px;
+            margin-top: 15px;
         }
 
-        .progress-bar {
+        .barra {
             width: 100%;
-            height: 8px;
-            background: rgba(255,255,255,0.35);
-            border-radius: 10px;
+            height: 10px;
+            background: #eee;
+            border-radius: 20px;
             overflow: hidden;
+            margin: 10px 0 20px;
         }
 
-        .progress {
+        .barra-progreso {
             height: 100%;
-            width: 0%;
-            background: white;
-            border-radius: 10px;
+            width: 1%;
+            background: linear-gradient(
+                90deg,
+                #ff4f70,
+                #ff8fab
+            );
+
+            border-radius: 20px;
             transition: width 0.5s ease;
         }
 
         button {
-            margin-top: 25px;
-            padding: 15px 30px;
             border: none;
-            border-radius: 50px;
-            background: white;
-            color: #ff4f70;
+            background: #ff4f70;
+            color: white;
+
+            padding: 15px 25px;
+            border-radius: 30px;
+
             font-size: 17px;
             font-weight: bold;
+
             cursor: pointer;
 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+            box-shadow: 0 5px 15px rgba(255,79,112,0.3);
 
-            transition: transform 0.2s ease,
-                        box-shadow 0.2s ease;
+            transition: 0.3s;
         }
 
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.22);
+            transform: scale(1.05);
+            background: #ff365d;
         }
 
         button:active {
-            transform: scale(0.95);
+            transform: scale(0.97);
         }
 
-        .heart-float {
-            position: absolute;
-            bottom: -50px;
-            font-size: 20px;
-            animation: floatUp linear forwards;
-            opacity: 0.8;
-            pointer-events: none;
-        }
-
-        .final-message {
+        .mensaje-final {
             display: none;
-            color: #444;
         }
 
-        .final-message h2 {
+        .mensaje-final h2 {
             color: #ff4f70;
-            margin-bottom: 20px;
+            font-size: 28px;
         }
 
-        .final-message p {
-            font-size: 20px;
+        .mensaje-final p {
+            color: #555;
+            font-size: 19px;
             line-height: 1.6;
         }
 
-        @keyframes changeReason {
-            0% {
-                opacity: 0;
-                transform: scale(0.9);
-            }
+        /* Corazones flotantes */
 
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .corazon-flotante {
+            position: fixed;
+            bottom: -50px;
+            font-size: 25px;
+            animation: subir 6s linear infinite;
+            opacity: 0.7;
+            z-index: 1;
         }
 
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.15);
-            }
-        }
-
-        @keyframes floatUp {
+        @keyframes subir {
             0% {
                 transform: translateY(0) rotate(0deg);
                 opacity: 0;
             }
 
-            10% {
+            20% {
                 opacity: 0.8;
             }
 
@@ -200,23 +174,74 @@
             }
         }
 
+        @keyframes latido {
+            0% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.12);
+            }
+
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        /* Animación de cambio de razón */
+
+        .aparecer {
+            animation: aparecer 0.5s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Adaptación para celular */
+
         @media (max-width: 500px) {
 
-            .title h1 {
-                font-size: 27px;
+            .contenedor {
+                padding: 15px;
             }
 
-            .card {
-                padding: 35px 20px;
-                min-height: 270px;
+            .tarjeta {
+                padding: 30px 20px;
             }
 
-            .reason {
-                font-size: 21px;
+            h1 {
+                font-size: 24px;
+            }
+
+            .corazon {
+                font-size: 55px;
+            }
+
+            .razon {
+                font-size: 19px;
+                min-height: 130px;
             }
 
             button {
                 width: 100%;
+                font-size: 16px;
             }
         }
     </style>
@@ -224,63 +249,68 @@
 
 <body>
 
-    <div class="container">
+    <div class="contenedor">
 
-        <div class="title">
-            <h1>100 razones por las que te quiero ❤️</h1>
-            <p>Hay muchas más de 100... pero empecemos por estas.</p>
-        </div>
+        <div class="tarjeta">
 
-        <div class="card" id="card">
+            <div class="corazon">
+                ❤️
+            </div>
 
-            <div id="reasonContent">
+            <h1>
+                100 razones por las que te quiero
+            </h1>
 
-                <div class="heart">❤️</div>
+            <div id="contenido">
 
-                <div class="number" id="number">
+                <div class="numero" id="numero">
                     #1
                 </div>
 
-                <div class="reason" id="reason">
-                    Porque contigo incluso un día normal puede convertirse
-                    en un bonito recuerdo. ❤️
+                <div class="razon" id="razon">
+                    Porque llegaste a mi vida y la hiciste mucho más bonita. ❤️
+                </div>
+
+                <div class="progreso-texto" id="progresoTexto">
+                    1 / 100
+                </div>
+
+                <div class="barra">
+                    <div
+                        class="barra-progreso"
+                        id="barraProgreso">
+                    </div>
+                </div>
+
+                <button onclick="siguienteRazon()">
+                    ✨ Dame otra razón
+                </button>
+
+            </div>
+
+            <div class="mensaje-final" id="mensajeFinal">
+
+                <h2>
+                    Llegaste al final ❤️
+                </h2>
+
+                <p>
+                    Estas fueron 100 razones...
+                    pero podría encontrar muchas más.
+                </p>
+
+                <p>
+                    Porque quererte no se puede resumir
+                    en una lista. ❤️
+                </p>
+
+                <div style="font-size: 45px;">
+                    💕🥰💕
                 </div>
 
             </div>
 
-            <div class="final-message" id="finalMessage">
-
-                <div class="heart">💖</div>
-
-                <h2>Llegaste al final ❤️</h2>
-
-                <p>
-                    Estas fueron solo 100 razones...
-                    pero podría encontrar muchas más.
-                    <br><br>
-                    Porque quererte no se puede resumir en una lista. ❤️
-                </p>
-
-            </div>
-
         </div>
-
-        <div class="progress-container">
-
-            <div class="progress-text">
-                Razones descubiertas:
-                <span id="counter">1</span> / 100
-            </div>
-
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-            </div>
-
-        </div>
-
-        <button id="nextButton" onclick="nextReason()">
-            ✨ Dame otra razón
-        </button>
 
     </div>
 
@@ -288,237 +318,328 @@
     <script>
 
         /*
-        ============================================
+        =====================================================
         100 RAZONES
-        ============================================
-
-        Por ahora solamente tenemos 20 de prueba.
-        Después podemos poner las 100 razones reales.
+        =====================================================
         */
 
-        const reasons = [
+        const razones = [
 
-            "Porque contigo incluso un día normal puede convertirse en un bonito recuerdo. ❤️",
+            "Porque llegaste a mi vida y la hiciste mucho más bonita. ❤️",
 
-            "Porque tu sonrisa tiene una forma especial de alegrarme el día. 😊",
+            "Porque contigo puedo ser completamente yo.",
 
-            "Porque me gusta la tranquilidad que siento cuando estoy contigo.",
+            "Porque tu sonrisa tiene el poder de cambiar mi día.",
 
-            "Porque contigo puedo ser yo mismo sin tener que fingir nada.",
+            "Porque me haces sentir especial.",
 
-            "Porque haces que los momentos pequeños se vuelvan importantes.",
+            "Porque contigo hasta los momentos simples se vuelven recuerdos bonitos.",
 
-            "Porque siempre encuentras una forma de hacerme sonreír.",
+            "Porque me gusta compartir mi tiempo contigo.",
 
-            "Porque me encanta compartir mis días contigo.",
+            "Porque siempre tienes una forma especial de hacerme sonreír.",
 
-            "Porque tu forma de mirarme hace que me olvide de todo lo demás.",
+            "Porque me encanta tu manera de ser.",
 
-            "Porque contigo puedo reírme hasta de las cosas más tontas. 😂",
+            "Porque contigo siento que estoy en el lugar correcto.",
+
+            "Porque haces que mis días sean mejores.",
+
+            "Porque me gusta escucharte hablar de cualquier cosa.",
+
+            "Porque cada momento contigo tiene algo especial.",
 
             "Porque me haces querer ser una mejor persona.",
 
-            "Porque me encanta escuchar tus historias, incluso cuando ya me las sé.",
+            "Porque tu cariño significa muchísimo para mí.",
 
-            "Porque contigo siento que tengo a alguien a mi lado.",
+            "Porque me encanta cuando estamos juntos.",
 
-            "Porque haces que cualquier lugar sea especial si estás tú.",
+            "Porque incluso cuando no hacemos nada, disfruto estar contigo.",
 
-            "Porque me gusta crear recuerdos contigo.",
+            "Porque contigo puedo crear recuerdos que quiero guardar para siempre.",
 
-            "Porque me encanta cuando nos reímos juntos por cualquier tontera.",
+            "Porque me haces sentir acompañado.",
 
-            "Porque tienes una manera única de hacerme sentir querido.",
+            "Porque me encanta verte feliz.",
 
-            "Porque cada momento contigo termina siendo un recuerdo que quiero guardar.",
-
-            "Porque me encanta pensar en todas las cosas que todavía nos quedan por vivir.",
-
-            "Porque incluso cuando no decimos nada, disfruto estar contigo.",
-
-            "Porque simplemente eres tú... y eso ya es una razón suficiente. ❤️"
+            "Porque simplemente eres tú, y eso me encanta."
 
         ];
 
 
         /*
-        ============================================
+        =====================================================
         VARIABLES
-        ============================================
+        =====================================================
         */
 
-        let usedReasons = [0];
+        const TOTAL_RAZONES = razones.length;
 
-        let currentNumber = 1;
+        let razonActual = 1;
+
+        let razonesMostradas = [];
 
 
         /*
-        ============================================
-        MOSTRAR SIGUIENTE RAZÓN
-        ============================================
+        =====================================================
+        RECUPERAR PROGRESO
+        =====================================================
         */
 
-        function nextReason() {
+        const progresoGuardado =
+            localStorage.getItem("razonActual");
 
-            if (currentNumber >= 100) {
+        const razonesGuardadas =
+            localStorage.getItem("razonesMostradas");
 
-                showFinalMessage();
+
+        if (progresoGuardado !== null) {
+
+            razonActual = parseInt(progresoGuardado);
+
+        }
+
+
+        if (razonesGuardadas !== null) {
+
+            razonesMostradas =
+                JSON.parse(razonesGuardadas);
+
+        }
+
+
+        /*
+        =====================================================
+        MOSTRAR RAZÓN
+        =====================================================
+        */
+
+        function mostrarRazon() {
+
+            if (razonActual > TOTAL_RAZONES) {
+
+                mostrarFinal();
 
                 return;
             }
 
 
+            const numero =
+                document.getElementById("numero");
+
+            const razon =
+                document.getElementById("razon");
+
+            const progresoTexto =
+                document.getElementById("progresoTexto");
+
+            const barra =
+                document.getElementById("barraProgreso");
+
+
             /*
-            Buscar una razón que todavía
-            no haya sido utilizada.
+            Buscar razones que todavía
+            no hayan sido mostradas
             */
 
-            let randomIndex;
+            let disponibles = [];
 
-            do {
+            for (let i = 0; i < razones.length; i++) {
 
-                randomIndex =
-                    Math.floor(Math.random() * reasons.length);
+                if (!razonesMostradas.includes(i)) {
 
-            } while (
-                usedReasons.includes(randomIndex)
-                &&
-                usedReasons.length < reasons.length
+                    disponibles.push(i);
+
+                }
+
+            }
+
+
+            /*
+            Si todavía existen razones disponibles
+            */
+
+            if (disponibles.length > 0) {
+
+                const posicion =
+                    Math.floor(
+                        Math.random() * disponibles.length
+                    );
+
+                const indice =
+                    disponibles[posicion];
+
+
+                razonesMostradas.push(indice);
+
+
+                razon.textContent =
+                    razones[indice];
+
+            }
+
+
+            numero.textContent =
+                "#" + razonActual;
+
+
+            progresoTexto.textContent =
+                razonActual + " / " + TOTAL_RAZONES;
+
+
+            const porcentaje =
+                (razonActual / TOTAL_RAZONES) * 100;
+
+
+            barra.style.width =
+                porcentaje + "%";
+
+
+            /*
+            Guardar progreso
+            */
+
+            localStorage.setItem(
+                "razonActual",
+                razonActual
+            );
+
+
+            localStorage.setItem(
+                "razonesMostradas",
+                JSON.stringify(razonesMostradas)
             );
 
 
             /*
-            Guardamos la razón utilizada.
+            Animación
             */
 
-            if (!usedReasons.includes(randomIndex)) {
+            razon.classList.remove("aparecer");
 
-                usedReasons.push(randomIndex);
+            void razon.offsetWidth;
 
-            }
-
-
-            currentNumber++;
-
-
-            /*
-            Actualizamos pantalla.
-            */
-
-            document.getElementById("number").textContent =
-                "#" + currentNumber;
-
-            document.getElementById("reason").textContent =
-                reasons[randomIndex];
-
-
-            /*
-            Actualizar contador.
-            */
-
-            document.getElementById("counter").textContent =
-                currentNumber;
-
-
-            /*
-            Actualizar barra.
-            */
-
-            document.getElementById("progress").style.width =
-                currentNumber + "%";
-
-
-            /*
-            Animación.
-            */
-
-            const card = document.getElementById("card");
-
-            card.classList.remove("animate");
-
-            void card.offsetWidth;
-
-            card.classList.add("animate");
-
-
-            /*
-            Crear corazones.
-            */
-
-            createHearts();
+            razon.classList.add("aparecer");
 
         }
 
 
         /*
-        ============================================
-        MENSAJE FINAL
-        ============================================
+        =====================================================
+        SIGUIENTE RAZÓN
+        =====================================================
         */
 
-        function showFinalMessage() {
+        function siguienteRazon() {
 
-            document.getElementById("reasonContent").style.display =
+            razonActual++;
+
+            mostrarRazon();
+
+        }
+
+
+        /*
+        =====================================================
+        FINAL
+        =====================================================
+        */
+
+        function mostrarFinal() {
+
+            document.getElementById("contenido").style.display =
                 "none";
 
-            document.getElementById("finalMessage").style.display =
+            document.getElementById("mensajeFinal").style.display =
                 "block";
 
-            document.getElementById("nextButton").style.display =
-                "none";
 
-            document.getElementById("progress").style.width =
-                "100%";
+            localStorage.setItem(
+                "terminado",
+                "true"
+            );
 
         }
 
 
         /*
-        ============================================
+        =====================================================
         CORAZONES FLOTANTES
-        ============================================
+        =====================================================
         */
 
-        function createHearts() {
+        function crearCorazon() {
 
-            for (let i = 0; i < 5; i++) {
+            const corazon =
+                document.createElement("div");
 
-                const heart =
-                    document.createElement("div");
-
-                heart.classList.add("heart-float");
-
-                heart.textContent =
-                    Math.random() > 0.5 ? "❤️" : "💕";
-
-                heart.style.left =
-                    Math.random() * 100 + "vw";
-
-                heart.style.animationDuration =
-                    (3 + Math.random() * 3) + "s";
-
-                document.body.appendChild(heart);
+            corazon.classList.add(
+                "corazon-flotante"
+            );
 
 
-                setTimeout(() => {
+            const corazones = [
+                "❤️",
+                "💕",
+                "💗",
+                "💖",
+                "💓"
+            ];
 
-                    heart.remove();
 
-                }, 6000);
+            corazon.textContent =
+                corazones[
+                    Math.floor(
+                        Math.random() *
+                        corazones.length
+                    )
+                ];
 
-            }
+
+            corazon.style.left =
+                Math.random() * 100 + "vw";
+
+
+            corazon.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+
+            corazon.style.fontSize =
+                (15 + Math.random() * 20) + "px";
+
+
+            document.body.appendChild(
+                corazon
+            );
+
+
+            setTimeout(() => {
+
+                corazon.remove();
+
+            }, 8000);
 
         }
 
 
         /*
-        ============================================
-        INICIO
-        ============================================
+        Crear corazones cada cierto tiempo
         */
 
-        document.getElementById("progress").style.width =
-            "1%";
+        setInterval(
+            crearCorazon,
+            700
+        );
+
+
+        /*
+        =====================================================
+        INICIO
+        =====================================================
+        */
+
+        mostrarRazon();
 
     </script>
 
