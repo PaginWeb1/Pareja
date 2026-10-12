@@ -1,2412 +1,1326 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para ti ❤️</title>
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --pink: #ff4f81;
-      --pink-dark: #e63e70;
-      --rose: #fff0f5;
-      --text: #442735;
-      --muted: #8c6877;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "DM Sans", sans-serif;
-      color: var(--text);
-
-      background:
-        radial-gradient(circle at 10% 15%, rgba(255,255,255,.75), transparent 25%),
-        radial-gradient(circle at 90% 85%, rgba(255,255,255,.65), transparent 25%),
-        linear-gradient(
-          135deg,
-          #ffd9e5 0%,
-          #fff0f5 45%,
-          #ffe0eb 100%
-        );
-
-      overflow-x: hidden;
-    }
-
-    /* =========================
-       CONTENEDOR PRINCIPAL
-    ========================== */
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px 15px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* =========================
-       CORAZONES FLOTANTES
-    ========================== */
-
-    .floating-hearts span {
-      position: fixed;
-      bottom: -50px;
-      font-size: 18px;
-      opacity: .18;
-      animation: floatHeart linear infinite;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .floating-hearts span:nth-child(1) {
-      left: 8%;
-      animation-duration: 10s;
-    }
-
-    .floating-hearts span:nth-child(2) {
-      left: 20%;
-      animation-duration: 13s;
-      animation-delay: 2s;
-    }
-
-    .floating-hearts span:nth-child(3) {
-      left: 38%;
-      animation-duration: 11s;
-      animation-delay: 4s;
-    }
-
-    .floating-hearts span:nth-child(4) {
-      left: 57%;
-      animation-duration: 14s;
-      animation-delay: 1s;
-    }
-
-    .floating-hearts span:nth-child(5) {
-      left: 75%;
-      animation-duration: 12s;
-      animation-delay: 3s;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para ti ❤️</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'DM Sans', sans-serif;
+            background:
+                radial-gradient(circle at top left, #ffd6e7, transparent 35%),
+                radial-gradient(circle at bottom right, #ffc1dc, transparent 35%),
+                linear-gradient(135deg, #fff0f6, #ffe4ef);
+
+            color: #4b2635;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           FONDO
+        ========================= */
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .love-card {
+            width: 100%;
+            max-width: 650px;
+            min-height: 620px;
+
+            padding: 35px;
+
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255,255,255,0.8);
+
+            border-radius: 35px;
+
+            box-shadow:
+                0 25px 70px rgba(170, 60, 100, 0.20);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* =========================
+           PANTALLAS
+        ========================= */
+
+        .screen {
+            width: 100%;
+            text-align: center;
+            animation: aparecer 0.6s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           TITULOS
+        ========================= */
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .main-heart {
+            font-size: 75px;
+            animation: latido 1.5s infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes latido {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        .title {
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            color: #9d2859;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #734354;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           BOTONES
+        ========================= */
+
+        .love-btn {
+            border: none;
+            background: linear-gradient(135deg, #d6336c, #b51f56);
+            color: white;
+
+            padding: 14px 28px;
+            border-radius: 50px;
+
+            font-weight: 600;
+
+            box-shadow: 0 10px 25px rgba(214, 51, 108, 0.25);
+
+            transition: 0.25s;
+        }
+
+        .love-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(214, 51, 108, 0.35);
+        }
+
+        .love-btn:active {
+            transform: scale(0.97);
+        }
 
-    .floating-hearts span:nth-child(6) {
-      left: 90%;
-      animation-duration: 15s;
-      animation-delay: 5s;
-    }
+        /* =========================
+           RAZONES
+        ========================= */
 
-    @keyframes floatHeart {
+        .reason-icon {
+            font-size: 55px;
+            color: #d6336c;
+            margin-bottom: 20px;
+        }
 
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
+        .reason-card {
+            background: rgba(255,255,255,0.75);
+            border-radius: 25px;
 
-      15% {
-        opacity: .18;
-      }
+            padding: 35px 25px;
 
-      100% {
-        transform: translateY(-115vh) rotate(25deg);
-        opacity: 0;
-      }
+            margin: 25px 0;
 
-    }
+            min-height: 160px;
 
-    /* =========================
-       TARJETA
-    ========================== */
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    .love-card {
-      width: min(720px, 100%);
-      min-height: 650px;
+            box-shadow: 0 10px 30px rgba(150, 50, 90, 0.10);
 
-      padding: 42px 28px;
+            animation: razonEntrada 0.45s ease;
+        }
 
-      border-radius: 32px;
+        .reason-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.35rem, 4vw, 1.8rem);
+            line-height: 1.5;
 
-      background: rgba(255,255,255,.76);
+            color: #702345;
 
-      border: 1px solid rgba(255,255,255,.9);
+            margin: 0;
+        }
 
-      box-shadow:
-        0 25px 70px rgba(161, 67, 103, .18);
+        @keyframes razonEntrada {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(10px);
+            }
 
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
 
-      position: relative;
-      z-index: 2;
+        /* =========================
+           PANTALLAS ESPECIALES
+        ========================= */
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        .special-heart {
+            font-size: 70px;
+            color: #d6336c;
 
-      overflow: hidden;
+            animation: latido 1.4s infinite;
 
-      animation: cardFloat 5s ease-in-out infinite;
-    }
+            margin-bottom: 20px;
+        }
 
-    @keyframes cardFloat {
+        .special-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 5vw, 2.1rem);
+            color: #79244a;
+            line-height: 1.5;
+        }
 
-      0%,100% {
-        transform: translateY(0);
-      }
+        /* =========================
+           CAJA DE REGALO
+        ========================= */
 
-      50% {
-        transform: translateY(-5px);
-      }
+        .gift-container {
+            margin: 35px auto;
+            cursor: pointer;
+            width: 180px;
+            height: 180px;
 
-    }
+            position: relative;
 
-    /* =========================
-       PANTALLAS
-    ========================== */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .screen {
-      width: 100%;
-      text-align: center;
+        .gift-box {
+            position: relative;
 
-      animation: screenIn .65s ease both;
-    }
+            width: 120px;
+            height: 100px;
 
-    .hidden {
-      display: none !important;
-    }
+            background: #d6336c;
 
-    @keyframes screenIn {
+            border-radius: 8px;
 
-      from {
-        opacity: 0;
-        transform: translateY(18px) scale(.98);
-      }
+            box-shadow:
+                0 15px 25px rgba(120, 30, 70, 0.25);
 
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+            transition: 0.4s;
+        }
 
-    }
+        .gift-box::before {
+            content: "";
 
-    /* =========================
-       PORTADA
-    ========================== */
+            position: absolute;
 
-    .main-heart {
+            top: -18px;
+            left: -5px;
 
-      width: 100px;
-      height: 100px;
+            width: 130px;
+            height: 25px;
 
-      margin: 0 auto 22px;
+            background: #b51f56;
 
-      border-radius: 50%;
+            border-radius: 7px;
+        }
 
-      display: grid;
-      place-items: center;
+        .gift-box::after {
+            content: "";
 
-      background:
-        linear-gradient(
-          135deg,
-          #ff7199,
-          #ff3f78
-        );
+            position: absolute;
 
-      color: white;
+            top: 0;
+            left: 48px;
 
-      font-size: 43px;
+            width: 24px;
+            height: 100%;
 
-      box-shadow:
-        0 15px 35px rgba(255, 79, 129, .28);
+            background: #ffd166;
+        }
 
-      animation:
-        heartbeat 1.8s ease-in-out infinite;
-    }
+        .gift-ribbon {
+            position: absolute;
 
-    @keyframes heartbeat {
+            top: -18px;
+            left: 48px;
 
-      0%, 100% {
-        transform: scale(1);
-      }
+            width: 24px;
+            height: 25px;
 
-      14% {
-        transform: scale(1.08);
-      }
+            background: #ffd166;
 
-      28% {
-        transform: scale(1);
-      }
+            z-index: 2;
+        }
 
-      42% {
-        transform: scale(1.06);
-      }
+        .gift-container:hover .gift-box {
+            transform: translateY(-10px) rotate(-2deg);
+        }
 
-      56% {
-        transform: scale(1);
-      }
+        /* =========================
+           SOBRES
+        ========================= */
 
-    }
+        .letters-container {
+            display: grid;
 
-    .eyebrow {
+            grid-template-columns: repeat(3, 1fr);
 
-      letter-spacing: 4px;
+            gap: 15px;
 
-      font-size: .75rem;
+            margin-top: 35px;
+        }
 
-      font-weight: 700;
+        .letter-card {
+            background: white;
 
-      color: var(--pink-dark);
+            border-radius: 18px;
 
-      text-transform: uppercase;
-    }
+            padding: 20px 10px;
 
-    h1,
-    h2,
-    h3 {
+            cursor: pointer;
 
-      font-family:
-        "Playfair Display",
-        serif;
-    }
+            box-shadow:
+                0 10px 25px rgba(120, 30, 70, 0.10);
 
-    .cover-title {
+            transition: 0.3s;
+        }
 
-      font-size:
-        clamp(
-          2.5rem,
-          7vw,
-          4.4rem
-        );
+        .letter-card:hover {
+            transform: translateY(-7px);
+        }
 
-      margin:
-        10px 0 18px;
-    }
+        .letter-icon {
+            font-size: 40px;
+            color: #d6336c;
+            margin-bottom: 10px;
+        }
 
-    .subtitle {
+        .letter-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
 
-      color: var(--muted);
+        /* =========================
+           MODAL CARTA
+        ========================= */
 
-      max-width: 560px;
+        .letter-overlay {
+            position: fixed;
 
-      margin:
-        0 auto;
+            inset: 0;
 
-      line-height: 1.8;
+            background: rgba(70, 20, 40, 0.55);
 
-      font-size: 1.05rem;
-    }
+            display: flex;
 
-    .quote {
+            align-items: center;
+            justify-content: center;
 
-      margin:
-        28px auto;
+            padding: 20px;
 
-      max-width: 540px;
+            z-index: 1000;
 
-      padding:
-        18px 22px;
+            animation: aparecer 0.3s ease;
+        }
 
-      border-left:
-        3px solid var(--pink);
+        .letter-modal {
+            width: 100%;
+            max-width: 550px;
 
-      background:
-        rgba(255,240,245,.7);
+            background: #fff8fb;
 
-      border-radius:
-        0 18px 18px 0;
+            border-radius: 25px;
 
-      font-family:
-        "Playfair Display",
-        serif;
+            padding: 35px;
 
-      font-style: italic;
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.25);
 
-      color: #704757;
-    }
+            position: relative;
+        }
 
-    /* =========================
-       BOTÓN
-    ========================== */
+        .letter-modal h3 {
+            color: #9d2859;
+            margin-bottom: 20px;
+        }
 
-    .romantic-btn {
+        .letter-modal p {
+            line-height: 1.8;
+            color: #593440;
+        }
 
-      border: 0;
+        .close-letter {
+            position: absolute;
 
-      border-radius: 999px;
+            top: 15px;
+            right: 18px;
 
-      padding:
-        14px 28px;
+            border: none;
 
-      font-weight: 700;
+            background: transparent;
 
-      color: white;
+            font-size: 25px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #ff7199,
-          #ff3f78
-        );
+            color: #9d2859;
 
-      box-shadow:
-        0 12px 25px rgba(255,63,120,.25);
+            cursor: pointer;
+        }
 
-      transition:
-        .25s ease;
+        /* =========================
+           CORAZONES FLOTANTES
+        ========================= */
 
-      position: relative;
+        .floating-hearts {
+            position: fixed;
 
-      overflow: hidden;
-    }
+            inset: 0;
 
-    .romantic-btn::after {
+            pointer-events: none;
 
-      content: "";
+            overflow: hidden;
 
-      position: absolute;
+            z-index: 1;
+        }
 
-      top: 0;
-      left: -80%;
+        .floating-hearts span {
+            position: absolute;
 
-      width: 45%;
-      height: 100%;
+            bottom: -50px;
 
-      background:
-        rgba(255,255,255,.35);
+            font-size: 20px;
 
-      transform:
-        skewX(-20deg);
+            animation: flotar 10s linear infinite;
 
-      transition:
-        .55s ease;
-    }
+            opacity: 0.5;
+        }
 
-    .romantic-btn:hover {
+        .floating-hearts span:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
 
-      transform:
-        translateY(-3px);
+        .floating-hearts span:nth-child(2) {
+            left: 25%;
+            animation-delay: 2s;
+        }
 
-      box-shadow:
-        0 16px 30px rgba(255,63,120,.3);
-    }
+        .floating-hearts span:nth-child(3) {
+            left: 45%;
+            animation-delay: 4s;
+        }
 
-    .romantic-btn:hover::after {
+        .floating-hearts span:nth-child(4) {
+            left: 65%;
+            animation-delay: 1s;
+        }
 
-      left: 130%;
-    }
+        .floating-hearts span:nth-child(5) {
+            left: 80%;
+            animation-delay: 3s;
+        }
 
-    /* =========================
-       RAZONES
-    ========================== */
+        .floating-hearts span:nth-child(6) {
+            left: 92%;
+            animation-delay: 5s;
+        }
 
-    .reason-title {
+        @keyframes flotar {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
 
-      font-size:
-        clamp(
-          2rem,
-          6vw,
-          3.2rem
-        );
+            20% {
+                opacity: 0.6;
+            }
 
-      margin-bottom:
-        8px;
-    }
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-    .reason-subtitle {
+        /* =========================
+           CORAZONES FINAL
+        ========================= */
 
-      color:
-        var(--muted);
+        .heart-final {
+            position: fixed;
 
-      margin-bottom:
-        28px;
-    }
+            font-size: 25px;
 
-    .reason-label {
+            pointer-events: none;
 
-      display:
-        inline-flex;
+            z-index: 2000;
 
-      align-items:
-        center;
+            animation: explosion 2s ease forwards;
+        }
 
-      gap:
-        8px;
+        @keyframes explosion {
 
-      background:
-        #fff0f5;
+            0% {
+                transform: translate(0, 0) scale(0.5);
+                opacity: 1;
+            }
 
-      color:
-        var(--pink-dark);
+            100% {
+                transform:
+                    translate(
+                        calc((var(--x)) * 1px),
+                        calc((var(--y)) * 1px)
+                    )
+                    scale(1.5);
 
-      border-radius:
-        999px;
+                opacity: 0;
+            }
+        }
 
-      padding:
-        8px 15px;
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
-      font-size:
-        .8rem;
+        @media (max-width: 600px) {
 
-      font-weight:
-        700;
+            .page {
+                padding: 15px;
+            }
 
-      margin-bottom:
-        18px;
-    }
+            .love-card {
+                min-height: 600px;
 
-    .reason-card {
+                padding: 25px 18px;
 
-      padding:
-        42px 30px;
+                border-radius: 28px;
+            }
 
-      border-radius:
-        28px;
+            .letters-container {
+                grid-template-columns: 1fr;
+            }
 
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.96),
-          rgba(255,244,248,.92)
-        );
+            .letter-card {
+                padding: 15px;
+            }
 
-      border:
-        1px solid #fff;
+            .gift-container {
+                margin: 25px auto;
+            }
 
-      box-shadow:
-        0 18px 45px rgba(140,72,100,.12);
+            .reason-card {
+                padding: 30px 18px;
+            }
 
-      margin-bottom:
-        28px;
+            .reason-text {
+                font-size: 1.3rem;
+            }
+        }
 
-      min-height:
-        190px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      transition:
-        .35s ease;
-    }
-
-    .reason-card:hover {
-
-      transform:
-        translateY(-5px);
-
-      box-shadow:
-        0 24px 55px rgba(140,72,100,.17);
-    }
-
-    .reason-text {
-
-      font-family:
-        "Playfair Display",
-        serif;
-
-      font-style:
-        italic;
-
-      font-size:
-        clamp(
-          1.35rem,
-          4vw,
-          2rem
-        );
-
-      line-height:
-        1.5;
-
-      margin:
-        0;
-    }
-
-    .reason-change {
-
-      animation:
-        reasonChange .65s ease both;
-    }
-
-    @keyframes reasonChange {
-
-      from {
-        opacity: 0;
-        transform:
-          translateY(22px)
-          scale(.97);
-      }
-
-      to {
-        opacity: 1;
-        transform:
-          translateY(0)
-          scale(1);
-      }
-
-    }
-
-    .tiny-note {
-
-      color:
-        #a47d8c;
-
-      font-size:
-        .84rem;
-
-      margin-top:
-        18px;
-    }
-
-    /* =========================
-       PANTALLAS ESPECIALES
-    ========================== */
-
-    .special-screen {
-
-      animation:
-        specialIn .9s ease both;
-    }
-
-    @keyframes specialIn {
-
-      from {
-        opacity: 0;
-        transform:
-          scale(.9);
-      }
-
-      to {
-        opacity: 1;
-        transform:
-          scale(1);
-      }
-
-    }
-
-    .special-icon {
-
-      font-size:
-        64px;
-
-      margin-bottom:
-        15px;
-
-      animation:
-        heartbeat 1.8s infinite;
-    }
-
-    /* =========================
-       CAJA DE REGALO
-    ========================== */
-
-    .gift-container {
-
-      margin:
-        28px auto 18px;
-
-      width:
-        190px;
-
-      height:
-        180px;
-
-      position:
-        relative;
-
-      cursor:
-        pointer;
-    }
-
-    .gift-box {
-
-      width:
-        150px;
-
-      height:
-        105px;
-
-      position:
-        absolute;
-
-      left:
-        20px;
-
-      bottom:
-        10px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ff7199,
-          #ff3f78
-        );
-
-      border-radius:
-        8px;
-
-      box-shadow:
-        0 20px 30px rgba(200,55,100,.22);
-    }
-
-    .gift-box::after {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      left:
-        62px;
-
-      top:
-        0;
-
-      width:
-        25px;
-
-      height:
-        100%;
-
-      background:
-        rgba(255,255,255,.45);
-    }
-
-    .gift-lid {
-
-      position:
-        absolute;
-
-      width:
-        168px;
-
-      height:
-        35px;
-
-      left:
-        11px;
-
-      bottom:
-        105px;
-
-      background:
-        #ff5a88;
-
-      border-radius:
-        7px;
-
-      z-index:
-        3;
-
-      transition:
-        1s cubic-bezier(.2,.8,.2,1);
-
-      transform-origin:
-        left bottom;
-    }
-
-    .gift-ribbon {
-
-      position:
-        absolute;
-
-      width:
-        25px;
-
-      height:
-        140px;
-
-      left:
-        82px;
-
-      bottom:
-        0;
-
-      background:
-        rgba(255,255,255,.5);
-
-      z-index:
-        4;
-    }
-
-    .gift-bow {
-
-      position:
-        absolute;
-
-      width:
-        34px;
-
-      height:
-        25px;
-
-      background:
-        #ff4b7d;
-
-      border-radius:
-        50%;
-
-      top:
-        -24px;
-
-      z-index:
-        5;
-
-      box-shadow:
-        30px 0 #ff4b7d;
-    }
-
-    .gift-bow::after {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        18px;
-
-      height:
-        18px;
-
-      border-radius:
-        50%;
-
-      background:
-        #ff326b;
-
-      left:
-        23px;
-
-      top:
-        4px;
-
-      z-index:
-        6;
-    }
-
-    .gift-container.open .gift-lid {
-
-      transform:
-        translate(-25px,-65px)
-        rotate(-18deg);
-    }
-
-    .gift-container.open .gift-box {
-
-      animation:
-        giftPop .8s ease;
-    }
-
-    @keyframes giftPop {
-
-      0%,100% {
-        transform:
-          translateY(0);
-      }
-
-      50% {
-        transform:
-          translateY(-10px);
-      }
-
-    }
-
-    /* =========================
-       CARTAS
-    ========================== */
-
-    .envelopes {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap:
-        14px;
-
-      margin-top:
-        30px;
-    }
-
-    .envelope {
-
-      border:
-        0;
-
-      border-radius:
-        22px;
-
-      padding:
-        22px 12px;
-
-      background:
-        rgba(255,255,255,.9);
-
-      box-shadow:
-        0 12px 30px rgba(140,72,100,.1);
-
-      color:
-        var(--text);
-
-      transition:
-        .25s ease;
-
-      min-height:
-        145px;
-    }
-
-    .envelope:hover {
-
-      transform:
-        translateY(-7px);
-
-      box-shadow:
-        0 18px 35px rgba(140,72,100,.16);
-    }
-
-    .envelope.opened {
-
-      opacity:
-        .55;
-    }
-
-    .envelope i {
-
-      font-size:
-        35px;
-
-      color:
-        var(--pink);
-
-      display:
-        block;
-
-      margin-bottom:
-        10px;
-    }
-
-    .envelope strong {
-
-      display:
-        block;
-
-      font-size:
-        .9rem;
-    }
-
-    /* =========================
-       MENSAJE FINAL
-    ========================== */
-
-    .final-reveal {
-
-      margin-top:
-        28px;
-
-      padding:
-        24px;
-
-      border-radius:
-        24px;
-
-      background:
-        #fff1f6;
-
-      animation:
-        screenIn .7s ease both;
-    }
-
-    /* =========================
-       CARTA MODAL
-    ========================== */
-
-    .modal-love {
-
-      position:
-        fixed;
-
-      inset:
-        0;
-
-      background:
-        rgba(67,27,45,.55);
-
-      backdrop-filter:
-        blur(7px);
-
-      z-index:
-        1000;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      padding:
-        20px;
-    }
-
-    .letter {
-
-      width:
-        min(600px,100%);
-
-      background:
-        #fffafc;
-
-      border-radius:
-        28px;
-
-      padding:
-        34px;
-
-      box-shadow:
-        0 30px 80px rgba(0,0,0,.2);
-
-      animation:
-        letterIn .45s ease both;
-
-      position:
-        relative;
-    }
-
-    @keyframes letterIn {
-
-      from {
-
-        opacity:
-          0;
-
-        transform:
-          translateY(30px)
-          scale(.94)
-          rotate(-1deg);
-      }
-
-      to {
-
-        opacity:
-          1;
-
-        transform:
-          translateY(0)
-          scale(1)
-          rotate(0);
-      }
-
-    }
-
-    .close-letter {
-
-      position:
-        absolute;
-
-      top:
-        15px;
-
-      right:
-        18px;
-
-      border:
-        0;
-
-      background:
-        #fff0f5;
-
-      width:
-        38px;
-
-      height:
-        38px;
-
-      border-radius:
-        50%;
-
-      color:
-        var(--pink-dark);
-
-      font-size:
-        20px;
-    }
-
-    .letter p {
-
-      line-height:
-        1.9;
-
-      color:
-        #725463;
-
-      white-space:
-        pre-line;
-    }
-
-    /* =========================
-       CORAZONES FINALES
-    ========================== */
-
-    .confetti-heart {
-
-      position:
-        fixed;
-
-      z-index:
-        999;
-
-      pointer-events:
-        none;
-
-      animation:
-        confetti 2.8s ease-out forwards;
-    }
-
-    @keyframes confetti {
-
-      0% {
-
-        transform:
-          translateY(0)
-          scale(.7)
-          rotate(0);
-
-        opacity:
-          1;
-      }
-
-      100% {
-
-        transform:
-          translate(
-            var(--x),
-            var(--y)
-          )
-          scale(1.2)
-          rotate(360deg);
-
-        opacity:
-          0;
-      }
-
-    }
-
-    /* =========================
-       CELULAR
-    ========================== */
-
-    @media (max-width:600px) {
-
-      .love-card {
-
-        min-height:
-          620px;
-
-        padding:
-          30px 18px;
-
-        border-radius:
-          26px;
-      }
-
-      .envelopes {
-
-        grid-template-columns:
-          1fr;
-      }
-
-      .envelope {
-
-        min-height:
-          auto;
-
-        padding:
-          18px;
-      }
-
-      .letter {
-
-        padding:
-          30px 22px;
-      }
-
-    }
-
-  </style>
+    </style>
 </head>
 
 <body>
 
-  <!-- CORAZONES FLOTANTES -->
+    <!-- =========================
+         CORAZONES FLOTANTES
+    ========================= -->
 
-  <div class="floating-hearts" aria-hidden="true">
+    <div class="floating-hearts">
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💗</span>
+        <span>❤️</span>
+        <span>💖</span>
+        <span>💕</span>
+    </div>
 
-    <span>❤</span>
-    <span>♡</span>
-    <span>❤</span>
-    <span>♡</span>
-    <span>❤</span>
-    <span>♡</span>
 
-  </div>
+    <!-- =========================
+         CONTENIDO
+    ========================= -->
 
+    <main class="page">
 
-  <main class="page">
+        <section class="love-card">
 
-    <section class="love-card">
 
+            <!-- =========================
+                 PORTADA
+            ========================= -->
 
-      <!-- =========================================
-           PORTADA
-      ========================================== -->
+            <div id="cover" class="screen">
 
-      <div id="cover" class="screen">
+                <div class="main-heart">
+                    ❤️
+                </div>
 
-        <div class="main-heart">
-          ❤️
-        </div>
+                <h1 class="title">
+                    Para ti
+                </h1>
 
-        <div class="eyebrow">
-          Un pequeño regalo
-        </div>
+                <p class="subtitle">
+                    Preparé algo pequeño para ti...
+                    <br>
+                    pero hecho con mucho cariño.
+                </p>
 
-        <h1 class="cover-title">
-          Para ti
-        </h1>
+                <button
+                    class="love-btn mt-4"
+                    onclick="iniciarRegalo()"
+                >
+                    Descubrir ❤️
+                </button>
 
-        <p class="subtitle">
+            </div>
 
-          Hay algo que quiero decirte...
-          y decidí hacerlo de una forma
-          un poquito diferente. ❤️
 
-        </p>
+            <!-- =========================
+                 RAZONES
+            ========================= -->
 
-        <div class="quote">
+            <div id="reasons" class="screen hidden">
 
-          “Porque hay cosas que no siempre
-          sé cómo decirte, así que decidí
-          escribirlas.”
+                <div class="reason-icon">
+                    <i class="bi bi-heart-fill"></i>
+                </div>
 
-        </div>
+                <h2>
+                    Algunas razones...
+                </h2>
 
-        <button
-          class="romantic-btn"
-          onclick="iniciarRegalo()"
-        >
+                <div class="reason-card">
 
-          <i class="bi bi-stars"></i>
+                    <p
+                        id="reasonText"
+                        class="reason-text"
+                    ></p>
 
-          Abrir mi regalo
+                </div>
 
-        </button>
+                <button
+                    id="nextReasonBtn"
+                    class="love-btn"
+                    onclick="siguienteRazon()"
+                >
+                    Otra razón ❤️
+                </button>
 
-      </div>
+            </div>
 
 
+            <!-- =========================
+                 PENÚLTIMA ESPECIAL
+            ========================= -->
 
-      <!-- =========================================
-           RAZONES
-      ========================================== -->
+            <div id="special2" class="screen hidden">
 
-      <div
-        id="reasons"
-        class="screen hidden"
-      >
+                <div class="special-heart">
+                    ❤️
+                </div>
 
-        <div class="eyebrow">
-          Para ti ❤️
-        </div>
+                <p class="special-text">
+                    Porque quiero seguir creando
+                    muchos recuerdos contigo.
+                </p>
 
-        <h2 class="reason-title">
-          Una razón para quererte
-        </h2>
+                <button
+                    class="love-btn mt-4"
+                    onclick="mostrarSpecial1()"
+                >
+                    Continuar ❤️
+                </button>
 
-        <p class="reason-subtitle">
+            </div>
 
-          Presiona el botón y descubre otra.
 
-        </p>
+            <!-- =========================
+                 ÚLTIMA ESPECIAL
+            ========================= -->
 
-        <div class="reason-label">
+            <div id="special1" class="screen hidden">
 
-          <i class="bi bi-heart-fill"></i>
+                <div class="special-heart">
+                    💖
+                </div>
 
-          Algo que quiero que sepas
+                <p class="special-text">
+                    Porque me gusta la persona
+                    que soy cuando estoy contigo.
+                </p>
 
-        </div>
+                <button
+                    class="love-btn mt-4"
+                    onclick="mostrarRevelacion()"
+                >
+                    Hay algo más...
+                </button>
 
-        <div
-          id="reasonCard"
-          class="reason-card"
-        >
+            </div>
 
-          <p
-            id="reasonText"
-            class="reason-text"
-          ></p>
 
-        </div>
+            <!-- =========================
+                 REVELACIÓN
+            ========================= -->
 
-        <button
-          id="nextButton"
-          class="romantic-btn"
-          onclick="siguienteRazon()"
-        >
+            <div id="reveal" class="screen hidden">
 
-          <i class="bi bi-stars"></i>
+                <div class="special-heart">
+                    💕
+                </div>
 
-          Descubrir otra
+                <h2>
+                    ¿Sabes algo?
+                </h2>
 
-        </button>
+                <p class="subtitle mt-3">
+                    Acabas de descubrir todas las razones
+                    que preparé para ti.
+                </p>
 
-        <div class="tiny-note">
+                <p class="subtitle">
+                    Pero hay cosas que no caben
+                    en una lista...
+                </p>
 
-          Hay algunas cosas que prefiero
-          que descubras poco a poco... 💕
+                <button
+                    class="love-btn mt-4"
+                    onclick="mostrarCaja()"
+                >
+                    Hay una sorpresa para ti 🎁
+                </button>
 
-        </div>
+            </div>
 
-      </div>
 
+            <!-- =========================
+                 CAJA
+            ========================= -->
 
+            <div id="giftScreen" class="screen hidden">
 
-      <!-- =========================================
-           PENÚLTIMA PARTE
-      ========================================== -->
+                <div class="special-heart">
+                    🎁
+                </div>
 
-      <div
-        id="special2"
-        class="screen hidden special-screen"
-      >
+                <h2>
+                    Una última sorpresa
+                </h2>
 
-        <div class="special-icon">
-          💭
-        </div>
+                <p class="subtitle">
+                    Tienes que abrirla tú...
+                </p>
 
-        <div class="eyebrow">
-          Hay algo más...
-        </div>
+                <div
+                    class="gift-container"
+                    onclick="abrirCaja()"
+                >
 
-        <h2 class="reason-title">
-          Quiero decirte algo
-        </h2>
+                    <div class="gift-box">
 
-        <div class="reason-card">
+                        <div class="gift-ribbon"></div>
 
-          <p class="reason-text">
+                    </div>
 
-            Porque quiero seguir compartiendo
-            contigo esos momentos que quizás
-            parecen pequeños, pero que para mí
-            significan muchísimo.
+                </div>
 
-          </p>
+                <button
+                    class="love-btn"
+                    onclick="abrirCaja()"
+                >
+                    Abrir mi sorpresa ❤️
+                </button>
 
-        </div>
+            </div>
 
-        <button
-          class="romantic-btn"
-          onclick="irUltima()"
-        >
 
-          <i class="bi bi-arrow-right"></i>
+            <!-- =========================
+                 CARTAS
+            ========================= -->
 
-          Hay algo más para ti
+            <div id="lettersScreen" class="screen hidden">
 
-        </button>
+                <div class="special-heart">
+                    💌
+                </div>
 
-      </div>
+                <h2>
+                    Unas palabras para ti
+                </h2>
 
+                <p class="subtitle">
+                    Abre cada una cuando quieras.
+                </p>
 
 
-      <!-- =========================================
-           ÚLTIMA RAZÓN
-      ========================================== -->
+                <div class="letters-container">
 
-      <div
-        id="special1"
-        class="screen hidden special-screen"
-      >
 
-        <div class="special-icon">
-          ❤️
-        </div>
+                    <div
+                        class="letter-card"
+                        onclick="abrirSobre(1)"
+                    >
 
-        <div class="eyebrow">
-          Esta es diferente...
-        </div>
+                        <div class="letter-icon">
+                            <i class="bi bi-envelope-heart-fill"></i>
+                        </div>
 
-        <h2 class="reason-title">
-          La última razón
-        </h2>
+                        <div class="letter-title">
+                            Lo que siento por ti
+                        </div>
 
-        <div class="reason-card">
+                    </div>
 
-          <p class="reason-text">
 
-            Porque, entre tantas personas
-            en el mundo, me alegra haberte
-            encontrado.
+                    <div
+                        class="letter-card"
+                        onclick="abrirSobre(2)"
+                    >
 
-          </p>
+                        <div class="letter-icon">
+                            <i class="bi bi-envelope-heart-fill"></i>
+                        </div>
 
-        </div>
+                        <div class="letter-title">
+                            Lo que quiero vivir contigo
+                        </div>
 
-        <button
-          class="romantic-btn"
-          onclick="mostrarRevelacion()"
-        >
+                    </div>
 
-          <i class="bi bi-heart"></i>
 
-          Hay algo más para ti
+                    <div
+                        class="letter-card"
+                        onclick="abrirSobre(3)"
+                    >
 
-        </button>
+                        <div class="letter-icon">
+                            <i class="bi bi-envelope-heart-fill"></i>
+                        </div>
 
-      </div>
+                        <div class="letter-title">
+                            Algo que quiero que recuerdes
+                        </div>
 
+                    </div>
 
+                </div>
 
-      <!-- =========================================
-           REVELACIÓN DE LAS 100
-      ========================================== -->
+                <div
+                    id="finalMessage"
+                    class="mt-5 hidden"
+                >
 
-      <div
-        id="reveal"
-        class="screen hidden special-screen"
-      >
+                    <h3>
+                        ❤️ Y esto recién comienza...
+                    </h3>
 
-        <div class="special-icon">
-          🥹❤️
-        </div>
+                    <p class="subtitle">
+                        Las razones terminaron,
+                        pero mi historia contigo recién sigue.
+                        <br><br>
+                        Gracias por estar en mi vida. ❤️
+                    </p>
 
-        <h2 class="reason-title">
-          ¿Sabes algo?
-        </h2>
+                </div>
 
-        <div class="quote">
+            </div>
 
-          Acabas de descubrir
-          <strong>100 razones</strong>
-          por las que te quiero.
+        </section>
 
-          <br><br>
+    </main>
 
-          Pero hay cosas que no caben
-          en una lista...
 
-        </div>
-
-        <button
-          class="romantic-btn"
-          onclick="mostrarCaja()"
-        >
-
-          <i class="bi bi-gift"></i>
-
-          Hay una sorpresa para ti
-
-        </button>
-
-      </div>
-
-
-
-      <!-- =========================================
-           CAJA DE REGALO
-      ========================================== -->
-
-      <div
-        id="giftScreen"
-        class="screen hidden special-screen"
-      >
-
-        <div class="eyebrow">
-          Una última sorpresa
-        </div>
-
-        <h2 class="reason-title">
-          Abrir mi sorpresa
-        </h2>
-
-        <p class="subtitle">
-
-          Creo que todavía hay algunas
-          cosas que quiero decirte. ❤️
-
-        </p>
-
-        <div
-          id="gift"
-          class="gift-container"
-          onclick="abrirCaja()"
-        >
-
-          <div class="gift-box">
-
-            <div class="gift-ribbon"></div>
-
-          </div>
-
-          <div class="gift-lid">
-
-            <div class="gift-bow"></div>
-
-          </div>
-
-        </div>
-
-        <button
-          class="romantic-btn"
-          onclick="abrirCaja()"
-        >
-
-          <i class="bi bi-gift"></i>
-
-          Abrir la caja
-
-        </button>
-
-      </div>
-
-
-
-      <!-- =========================================
-           TRES CARTAS
-      ========================================== -->
-
-      <div
-        id="lettersScreen"
-        class="screen hidden special-screen"
-      >
-
-        <div class="eyebrow">
-          Lo que guardaba para ti
-        </div>
-
-        <h2 class="reason-title">
-          Tres pequeñas cartas
-        </h2>
-
-        <p class="subtitle">
-
-          Abre cada una cuando quieras. ❤️
-
-        </p>
-
-        <div class="envelopes">
-
-          <button
-            id="envelope1"
-            class="envelope"
-            onclick="abrirSobre(1)"
-          >
-
-            <i class="bi bi-envelope-heart-fill"></i>
-
-            <strong>
-              Lo que siento por ti
-            </strong>
-
-          </button>
-
-
-          <button
-            id="envelope2"
-            class="envelope"
-            onclick="abrirSobre(2)"
-          >
-
-            <i class="bi bi-stars"></i>
-
-            <strong>
-              Lo que quiero vivir contigo
-            </strong>
-
-          </button>
-
-
-          <button
-            id="envelope3"
-            class="envelope"
-            onclick="abrirSobre(3)"
-          >
-
-            <i class="bi bi-heart-fill"></i>
-
-            <strong>
-              Algo que quiero que recuerdes
-            </strong>
-
-          </button>
-
-        </div>
-
-
-        <div
-          id="lastMessage"
-          class="final-reveal hidden"
-        >
-
-          <h3>
-            ❤️ Y esto recién comienza...
-          </h3>
-
-          <p class="mb-0">
-
-            Las 100 razones terminaron,
-            pero mi historia contigo
-            recién sigue.
-
-            <br>
-
-            <strong>
-              Gracias por estar en mi vida. ❤️
-            </strong>
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- =========================================
-       MODAL DE CARTA
-  ========================================== -->
-
-  <div
-    id="letterOverlay"
-    class="modal-love hidden"
-    onclick="cerrarCarta(event)"
-  >
+    <!-- =========================
+         MODAL CARTA
+    ========================= -->
 
     <div
-      class="letter"
-      onclick="event.stopPropagation()"
+        id="letterOverlay"
+        class="letter-overlay hidden"
     >
 
-      <button
-        class="close-letter"
-        onclick="cerrarCarta()"
-      >
+        <div class="letter-modal">
 
-        <i class="bi bi-x-lg"></i>
+            <button
+                class="close-letter"
+                onclick="cerrarCarta()"
+            >
+                <i class="bi bi-x-lg"></i>
+            </button>
 
-      </button>
+            <h3 id="letterModalTitle"></h3>
 
-      <div
-        class="eyebrow mb-2"
-        id="letterEyebrow"
-      >
+            <p id="letterModalText"></p>
 
-        Para ti ❤️
-
-      </div>
-
-      <h3
-        id="letterTitle"
-        class="mb-3"
-      ></h3>
-
-      <p
-        id="letterText"
-        class="mb-0"
-      ></p>
+        </div>
 
     </div>
 
-  </div>
 
+    <script>
 
+        /* ==================================================
+           27 RAZONES NORMALES
+        ================================================== */
 
-  <script>
+        const razones = [
 
-    /* ==================================================
-       LAS 100 RAZONES
-    ================================================== */
+            "Porque haces mis días más bonitos.",
 
-    const razones = [
+            "Porque contigo puedo ser completamente yo.",
 
-      "Porque haces mis días más bonitos.",
+            "Porque tu sonrisa tiene algo que me encanta.",
 
-      "Porque contigo puedo ser completamente yo.",
+            "Porque siempre encuentras una forma de hacerme sonreír.",
 
-      "Porque tu sonrisa tiene algo que me encanta.",
+            "Porque me encanta compartir momentos contigo.",
 
-      "Porque siempre encuentras una forma de hacerme sonreír.",
+            "Porque contigo hasta los momentos simples se sienten especiales.",
 
-      "Porque me encanta compartir momentos contigo.",
+            "Porque tu forma de ser me encanta.",
 
-      "Porque contigo hasta los momentos simples se sienten especiales.",
+            "Porque me haces sentir acompañado.",
 
-      "Porque tu forma de ser me encanta.",
+            "Porque me gusta escucharte hablar.",
 
-      "Porque me haces sentir acompañado.",
+            "Porque cada recuerdo contigo tiene un lugar especial en mi corazón.",
 
-      "Porque me gusta escucharte hablar.",
+            "Porque me encanta cuando sonríes por algo que te hace feliz.",
 
-      "Porque cada recuerdo contigo tiene un lugar especial en mi corazón.",
+            "Porque haces que quiera ser una mejor persona.",
 
-      "Porque me encanta cuando sonríes por algo que te hace feliz.",
+            "Porque contigo puedo hablar de cualquier cosa.",
 
-      "Porque haces que quiera ser una mejor persona.",
+            "Porque me gusta cómo ves las cosas.",
 
-      "Porque contigo puedo hablar de cualquier cosa.",
+            "Porque tus abrazos hacen que todo parezca estar bien.",
 
-      "Porque me gusta cómo ves las cosas.",
+            "Porque me encanta pasar tiempo contigo.",
 
-      "Porque tus abrazos hacen que todo parezca estar bien.",
+            "Porque tienes una forma única de hacerme sentir especial.",
 
-      "Porque me encanta pasar tiempo contigo.",
+            "Porque me encanta tu manera de querer.",
 
-      "Porque tienes una forma única de hacerme sentir especial.",
+            "Porque contigo puedo disfrutar hasta los días más normales.",
 
-      "Porque me encanta tu manera de querer.",
+            "Porque siempre hay algo nuevo que descubrir de ti.",
 
-      "Porque contigo puedo disfrutar hasta los días más normales.",
+            "Porque me encanta cuando nos reímos juntos.",
 
-      "Porque siempre hay algo nuevo que descubrir de ti.",
+            "Porque tus pequeños detalles significan mucho para mí.",
 
-      "Porque me encanta cuando nos reímos juntos.",
+            "Porque haces que mis preocupaciones parezcan más pequeñas.",
 
-      "Porque tus pequeños detalles significan mucho para mí.",
+            "Porque me encanta tenerte en mi vida.",
 
-      "Porque haces que mis preocupaciones parezcan más pequeñas.",
+            "Porque contigo he creado recuerdos que quiero guardar para siempre.",
 
-      "Porque me encanta tenerte en mi vida.",
+            "Porque tu compañía siempre se siente especial.",
 
-      "Porque contigo he creado recuerdos que quiero guardar para siempre.",
+            "Porque me gusta cómo me haces sentir cuando estamos juntos."
 
-      "Porque tu compañía siempre se siente especial.",
+        ];
 
-      "Porque me gusta cómo me haces sentir cuando estamos juntos.",
 
-      "Porque contigo puedo compartir mis sueños.",
+        /* ==================================================
+           VARIABLES
+        ================================================== */
 
-      "Porque me encanta saber que puedo contar contigo.",
+        let razonesDisponibles = [];
 
-      "Porque tienes una personalidad que me enamora.",
+        let razonActual = 0;
 
-      "Porque tu forma de mirar me encanta.",
 
-      "Porque haces que cualquier lugar sea mejor si estás tú.",
+        /* ==================================================
+           CAMBIAR DE PANTALLA
+        ================================================== */
 
-      "Porque me encanta cuando hacemos cosas juntos.",
+        function pantalla(id) {
 
-      "Porque contigo aprendí que los pequeños momentos pueden significar muchísimo.",
+            document.querySelectorAll(".screen").forEach(screen => {
 
-      "Porque me gusta escucharte contar tus historias.",
+                screen.classList.add("hidden");
 
-      "Porque tienes una manera especial de alegrarme.",
+            });
 
-      "Porque me encanta verte feliz.",
+            document.getElementById(id).classList.remove("hidden");
 
-      "Porque tu felicidad también se vuelve importante para mí.",
+        }
 
-      "Porque me gusta cuando podemos olvidarnos del mundo y simplemente disfrutar.",
 
-      "Porque contigo puedo crear recuerdos inolvidables.",
+        /* ==================================================
+           MEZCLAR RAZONES
+        ================================================== */
 
-      "Porque me encanta tu sentido del humor.",
+        function mezclar(array) {
 
-      "Porque haces que incluso una conversación sencilla sea interesante.",
+            return array.sort(() => Math.random() - 0.5);
 
-      "Porque me gusta cómo eres cuando estás feliz.",
+        }
 
-      "Porque tienes detalles que quizás no notas, pero yo sí.",
 
-      "Porque me encanta cuando me haces reír sin intentarlo.",
+        /* ==================================================
+           INICIAR REGALO
+        ================================================== */
 
-      "Porque contigo siento que el tiempo pasa demasiado rápido.",
+        function iniciarRegalo() {
 
-      "Porque me gusta estar cerca de ti.",
+            razonesDisponibles = mezclar([...razones]);
 
-      "Porque haces que mi corazón se sienta tranquilo.",
+            razonActual = 0;
 
-      "Porque me encanta compartir mis alegrías contigo.",
+            pantalla("reasons");
 
-      "Porque también quiero estar contigo en los días difíciles.",
+            mostrarRazon();
 
-      "Porque me gusta cómo podemos apoyarnos.",
+        }
 
-      "Porque tu presencia significa mucho para mí.",
 
-      "Porque me encanta la confianza que tenemos.",
+        /* ==================================================
+           MOSTRAR RAZÓN
+        ================================================== */
 
-      "Porque contigo puedo hablar desde el corazón.",
+        function mostrarRazon() {
 
-      "Porque me haces sentir querido.",
+            const texto = document.getElementById("reasonText");
 
-      "Porque me encanta cuando hacemos recuerdos sin planearlos.",
+            texto.style.animation = "none";
 
-      "Porque cada momento contigo puede convertirse en una historia.",
+            void texto.offsetWidth;
 
-      "Porque me encanta tu forma de expresarte.",
+            texto.style.animation = "razonEntrada 0.45s ease";
 
-      "Porque contigo puedo disfrutar de las cosas pequeñas.",
+            texto.textContent =
+                razonesDisponibles[razonActual];
 
-      "Porque me gusta imaginar nuevos recuerdos contigo.",
+        }
 
-      "Porque haces que mi vida tenga momentos más felices.",
 
-      "Porque me encanta compartir mis planes contigo.",
+        /* ==================================================
+           SIGUIENTE RAZÓN
+        ================================================== */
 
-      "Porque me gusta saber qué cosas te hacen feliz.",
+        function siguienteRazon() {
 
-      "Porque quiero conocer cada vez más de ti.",
+            razonActual++;
 
-      "Porque tu forma de pensar me parece especial.",
+            /*
+                Cuando terminamos las 27 razones
+                normales pasamos a las 3 especiales.
+            */
 
-      "Porque me encanta cuando tenemos nuestras propias bromas.",
+            if (razonActual >= razonesDisponibles.length) {
 
-      "Porque contigo puedo reírme hasta de las cosas más tontas.",
+                mostrarSpecial2();
 
-      "Porque me gusta sentir que somos un equipo.",
+                return;
 
-      "Porque me encanta cuando logramos algo juntos.",
+            }
 
-      "Porque haces que quiera disfrutar más el presente.",
+            mostrarRazon();
 
-      "Porque me encanta recordar nuestros momentos juntos.",
+        }
 
-      "Porque siempre hay una razón para sonreír cuando pienso en ti.",
 
-      "Porque me gusta cómo cambia mi día cuando apareces.",
+        /* ==================================================
+           ESPECIAL 2
+        ================================================== */
 
-      "Porque tienes un lugar muy especial en mi corazón.",
+        function mostrarSpecial2() {
 
-      "Porque me encanta tu manera de demostrar cariño.",
+            pantalla("special2");
 
-      "Porque contigo puedo sentirme en paz.",
+        }
 
-      "Porque me haces valorar mucho más los momentos compartidos.",
 
-      "Porque me encanta cuando me cuentas lo que estás pensando.",
+        /* ==================================================
+           ESPECIAL 1
+        ================================================== */
 
-      "Porque quiero seguir creando recuerdos contigo.",
+        function mostrarSpecial1() {
 
-      "Porque me gusta la persona que soy cuando estoy contigo.",
+            pantalla("special1");
 
-      "Porque tu forma de ser deja una huella bonita en mi vida.",
+        }
 
-      "Porque me encanta compartir nuestras pequeñas aventuras.",
 
-      "Porque haces que cualquier día pueda convertirse en un buen día.",
+        /* ==================================================
+           REVELACIÓN
+        ================================================== */
 
-      "Porque contigo puedo disfrutar simplemente de estar juntos.",
+        function mostrarRevelacion() {
 
-      "Porque me encanta cuando conseguimos hacernos reír mutuamente.",
+            pantalla("reveal");
 
-      "Porque tus palabras pueden cambiar mi ánimo.",
+        }
 
-      "Porque me gusta la complicidad que tenemos.",
 
-      "Porque cada momento contigo tiene algo especial.",
+        /* ==================================================
+           MOSTRAR CAJA
+        ================================================== */
 
-      "Porque me encanta saber que estás en mi vida.",
+        function mostrarCaja() {
 
-      "Porque contigo los recuerdos se vuelven más bonitos.",
+            pantalla("giftScreen");
 
-      "Porque me haces sentir afortunado.",
+        }
 
-      "Porque me encanta tu manera de demostrar quién eres.",
 
-      "Porque disfruto cada oportunidad de compartir contigo.",
+        /* ==================================================
+           ABRIR CAJA
+        ================================================== */
 
-      "Porque quiero estar presente en muchos de tus momentos importantes.",
+        function abrirCaja() {
 
-      "Porque me encanta descubrir nuevas cosas de ti.",
+            lanzarCorazones();
 
-      "Porque haces que quiera cuidar lo que tenemos.",
+            setTimeout(() => {
 
-      "Porque me gusta cuando simplemente estamos juntos sin necesidad de hacer nada.",
+                pantalla("lettersScreen");
 
-      "Porque contigo aprendí a valorar mucho más los pequeños detalles.",
+            }, 700);
 
-      "Porque me encanta todo lo que hemos vivido juntos.",
+        }
 
-      "Porque, entre tantas personas en el mundo, me alegra haberte encontrado."
 
-    ];
+        /* ==================================================
+           CARTAS
+        ================================================== */
 
+        const cartas = {
 
+            1: {
 
-    /* ==================================================
-       VARIABLES
-    ================================================== */
+                titulo: "Lo que siento por ti",
 
-    let orden = [];
+                texto:
+                `A veces quizás no encuentro las palabras exactas para decirte todo lo que siento.
 
-    let indice = 0;
+Pero quiero que sepas que tu presencia en mi vida significa muchísimo para mí.
 
-    let iniciada = false;
-
-    let cartasAbiertas = new Set();
-
-
-
-    /* ==================================================
-       TEXTOS DE LAS CARTAS
-    ================================================== */
-
-    const cartas = {
-
-      1: {
-
-        titulo:
-          "Lo que siento por ti",
-
-        texto:
-`A veces quizás no encuentro las palabras exactas para decirte todo lo que siento.
-
-Pero quiero que sepas que tu presencia en mi vida significa muchísimo para mí. Me encanta compartir contigo, reír contigo y simplemente saber que estás ahí.
+Me encanta compartir contigo, reír contigo y simplemente saber que estás ahí.
 
 No necesito que cada día sea perfecto. Me basta con tener momentos contigo que podamos recordar y guardar en nuestro corazón. ❤️`
 
-      },
+            },
 
+            2: {
 
-      2: {
+                titulo: "Lo que quiero vivir contigo",
 
-        titulo:
-          "Lo que quiero vivir contigo",
-
-        texto:
-`Quiero seguir creando recuerdos contigo.
+                texto:
+                `Quiero seguir creando recuerdos contigo.
 
 Quiero más salidas, más risas, más conversaciones que se alarguen sin darnos cuenta, más aventuras y también esos momentos tranquilos en los que simplemente disfrutamos estar juntos.
 
 No sé exactamente qué nos traerá el futuro, pero sí sé que me gustaría vivir muchas cosas bonitas contigo. 🌙❤️`
 
-      },
+            },
 
+            3: {
 
-      3: {
+                titulo: "Algo que quiero que recuerdes",
 
-        titulo:
-          "Algo que quiero que recuerdes",
+                texto:
+                `Si algún día dudas de lo importante que eres para mí, vuelve a recordar este pequeño regalo.
 
-        texto:
-`Si algún día dudas de lo importante que eres para mí, vuelve a recordar este pequeño regalo.
+No escribí estas razones porque fueran suficientes para explicar todo lo que siento.
 
-No escribí estas razones porque fueran suficientes para explicar todo lo que siento. Las escribí porque quería encontrar una forma de decirte algo que quizás no siempre digo:
+Las escribí porque quería encontrar una forma de decirte algo que quizás no siempre digo:
 
 Me alegra muchísimo que estés en mi vida. ❤️`
 
-      }
+            }
 
-    };
+        };
 
 
+        /* ==================================================
+           ABRIR CARTA
+        ================================================== */
 
-    /* ==================================================
-       CAMBIAR DE PANTALLA
-    ================================================== */
+        function abrirSobre(numero) {
 
-    function pantalla(id) {
+            document.getElementById("letterModalTitle").textContent =
+                cartas[numero].titulo;
 
-      document
-        .querySelectorAll(".screen")
-        .forEach(el => {
+            document.getElementById("letterModalText").innerHTML =
+                cartas[numero].texto.replace(/\n/g, "<br>");
 
-          el.classList.add("hidden");
+            document
+                .getElementById("letterOverlay")
+                .classList.remove("hidden");
 
-        });
+        }
 
 
-      const el =
-        document.getElementById(id);
+        /* ==================================================
+           CERRAR CARTA
+        ================================================== */
 
+        function cerrarCarta() {
 
-      el.classList.remove("hidden");
+            document
+                .getElementById("letterOverlay")
+                .classList.add("hidden");
 
+            comprobarCartas();
 
-      el.classList.remove("screen");
+        }
 
-      void el.offsetWidth;
 
-      el.classList.add("screen");
+        /* ==================================================
+           COMPROBAR SI SE ABRIERON LAS 3 CARTAS
+        ================================================== */
 
-    }
+        let cartasAbiertas = new Set();
 
 
+        const abrirSobreOriginal = abrirSobre;
 
-    /* ==================================================
-       MEZCLAR RAZONES
-    ================================================== */
 
-    function mezclar(array) {
+        abrirSobre = function(numero) {
 
-      const copia =
-        [...array];
+            cartasAbiertas.add(numero);
 
+            abrirSobreOriginal(numero);
 
-      for (
-        let i = copia.length - 1;
-        i > 0;
-        i--
-      ) {
+        };
 
-        const j =
-          Math.floor(
-            Math.random() *
-            (i + 1)
-          );
 
+        function comprobarCartas() {
 
-        [
-          copia[i],
-          copia[j]
-        ] =
-        [
-          copia[j],
-          copia[i]
-        ];
+            if (cartasAbiertas.size === 3) {
 
-      }
+                document
+                    .getElementById("finalMessage")
+                    .classList.remove("hidden");
 
+                lanzarCorazones();
 
-      return copia;
+            }
 
-    }
+        }
 
 
+        /* ==================================================
+           CORAZONES FINALES
+        ================================================== */
 
-    /* ==================================================
-       INICIAR
-    ================================================== */
+        function lanzarCorazones() {
 
-    function iniciarRegalo() {
+            const cantidad = 35;
 
-      orden =
-        mezclar(
-          [...Array(100).keys()]
-        );
+            for (let i = 0; i < cantidad; i++) {
 
+                const heart = document.createElement("div");
 
-      indice = 0;
+                heart.className = "heart-final";
 
-      iniciada = true;
+                heart.textContent =
+                    ["❤️", "💕", "💗", "💖"][Math.floor(Math.random() * 4)];
 
+                heart.style.left =
+                    window.innerWidth / 2 + "px";
 
-      pantalla("reasons");
+                heart.style.top =
+                    window.innerHeight / 2 + "px";
 
+                heart.style.setProperty(
+                    "--x",
+                    Math.random() * 500 - 250
+                );
 
-      mostrarRazon();
+                heart.style.setProperty(
+                    "--y",
+                    Math.random() * 500 - 250
+                );
 
-    }
+                document.body.appendChild(heart);
 
 
+                setTimeout(() => {
 
-    /* ==================================================
-       MOSTRAR RAZÓN
-    ================================================== */
+                    heart.remove();
 
-    function mostrarRazon() {
+                }, 2000);
 
-      const texto =
-        document.getElementById(
-          "reasonText"
-        );
+            }
 
+        }
 
-      const card =
-        document.getElementById(
-          "reasonCard"
-        );
-
-
-      card.classList.remove(
-        "reason-change"
-      );
-
-
-      void card.offsetWidth;
-
-
-      card.classList.add(
-        "reason-change"
-      );
-
-
-      texto.textContent =
-        razones[
-          orden[indice]
-        ];
-
-
-      const button =
-        document.getElementById(
-          "nextButton"
-        );
-
-
-      if (indice === 96) {
-
-        button.innerHTML =
-          '<i class="bi bi-stars"></i> Descubrir una más';
-
-      }
-
-      else if (indice % 5 === 0) {
-
-        button.innerHTML =
-          '<i class="bi bi-heart"></i> Otra razón para ti';
-
-      }
-
-      else {
-
-        button.innerHTML =
-          '<i class="bi bi-stars"></i> Descubrir otra';
-
-      }
-
-    }
-
-
-
-    /* ==================================================
-       SIGUIENTE RAZÓN
-    ================================================== */
-
-    function siguienteRazon() {
-
-      /*
-        Las razones 1 a 98 se muestran normalmente.
-
-        Luego comienza la parte especial.
-      */
-
-      if (indice < 96) {
-
-        indice++;
-
-        mostrarRazon();
-
-        return;
-
-      }
-
-
-      if (indice === 96) {
-
-        indice = 97;
-
-        mostrarRazon();
-
-        return;
-
-      }
-
-
-      if (indice === 97) {
-
-        pantalla("special2");
-
-        return;
-
-      }
-
-    }
-
-
-
-    /* ==================================================
-       ÚLTIMA PARTE
-    ================================================== */
-
-    function irUltima() {
-
-      pantalla("special1");
-
-      lanzarCorazones(12);
-
-    }
-
-
-
-    /* ==================================================
-       REVELACIÓN
-    ================================================== */
-
-    function mostrarRevelacion() {
-
-      pantalla("reveal");
-
-      lanzarCorazones(22);
-
-    }
-
-
-
-    /* ==================================================
-       MOSTRAR CAJA
-    ================================================== */
-
-    function mostrarCaja() {
-
-      pantalla("giftScreen");
-
-    }
-
-
-
-    /* ==================================================
-       ABRIR CAJA
-    ================================================== */
-
-    function abrirCaja() {
-
-      const gift =
-        document.getElementById(
-          "gift"
-        );
-
-
-      if (
-        !gift.classList.contains(
-          "open"
-        )
-      ) {
-
-        gift.classList.add(
-          "open"
-        );
-
-
-        lanzarCorazones(18);
-
-
-        setTimeout(() => {
-
-          pantalla(
-            "lettersScreen"
-          );
-
-        }, 1150);
-
-      }
-
-    }
-
-
-
-    /* ==================================================
-       ABRIR CARTA
-    ================================================== */
-
-    function abrirSobre(numero) {
-
-      cartasAbiertas.add(
-        numero
-      );
-
-
-      document
-        .getElementById(
-          "envelope" + numero
-        )
-        .classList.add(
-          "opened"
-        );
-
-
-      document.getElementById(
-        "letterTitle"
-      ).textContent =
-        cartas[numero].titulo;
-
-
-      document.getElementById(
-        "letterText"
-      ).textContent =
-        cartas[numero].texto;
-
-
-      document.getElementById(
-        "letterOverlay"
-      ).classList.remove(
-        "hidden"
-      );
-
-
-      if (
-        cartasAbiertas.size === 3
-      ) {
-
-        setTimeout(() => {
-
-          document.getElementById(
-            "lastMessage"
-          ).classList.remove(
-            "hidden"
-          );
-
-
-          lanzarCorazones(30);
-
-        }, 500);
-
-      }
-
-    }
-
-
-
-    /* ==================================================
-       CERRAR CARTA
-    ================================================== */
-
-    function cerrarCarta(event) {
-
-      if (
-        !event ||
-        event.target.id ===
-        "letterOverlay"
-      ) {
-
-        document
-          .getElementById(
-            "letterOverlay"
-          )
-          .classList.add(
-            "hidden"
-          );
-
-      }
-
-    }
-
-
-
-    /* ==================================================
-       CORAZONES ANIMADOS
-    ================================================== */
-
-    function lanzarCorazones(cantidad) {
-
-      for (
-        let i = 0;
-        i < cantidad;
-        i++
-      ) {
-
-        setTimeout(() => {
-
-          const heart =
-            document.createElement(
-              "div"
-            );
-
-
-          heart.className =
-            "confetti-heart";
-
-
-          heart.textContent =
-            [
-              "❤️",
-              "💕",
-              "💗",
-              "💖",
-              "💓"
-            ][
-              Math.floor(
-                Math.random() * 5
-              )
-            ];
-
-
-          heart.style.left =
-            (
-              35 +
-              Math.random() * 30
-            ) + "vw";
-
-
-          heart.style.top =
-            (
-              45 +
-              Math.random() * 15
-            ) + "vh";
-
-
-          heart.style.setProperty(
-            "--x",
-            (
-              (Math.random() - .5) *
-              500
-            ) + "px"
-          );
-
-
-          heart.style.setProperty(
-            "--y",
-            (
-              -180 -
-              Math.random() * 420
-            ) + "px"
-          );
-
-
-          heart.style.fontSize =
-            (
-              14 +
-              Math.random() * 18
-            ) + "px";
-
-
-          document.body.appendChild(
-            heart
-          );
-
-
-          setTimeout(() => {
-
-            heart.remove();
-
-          }, 3000);
-
-
-        }, i * 55);
-
-      }
-
-    }
-
-  </script>
+    </script>
 
 </body>
 </html>
